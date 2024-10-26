@@ -1,38 +1,37 @@
 @import '../../../styles/color.scss';
-.booking-province{
-    width: 60%;
+.booking-film {
+    width: 70%;
     border-radius: 5px;
     background-color: $color-white;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);;
-    .booking-province-title {
+    margin: 20px 0;
+
+    .booking-film-title {
         display: flex;
         text-align: left;
         padding: 10px;
         margin: 0 4px;
+
         .title {
             color: $color-title;
             font-size: 18px;
-            margin: 0;
+            margin: 12px 0;
             flex: 1;
         }
 
         .icon{
             color: $color-title;
             font-size: 24px;
-        }
-    }
-    .booking-province-list {
-        display: flex;
-        height: fit-content;
-        padding: 0 10px 10px 10px;
-        .booking-province-item{
-            color: $color-text;
-            font-size: 14px;
-            padding: 4px;
-            margin: 4px;
-            border: 1px solid $color-text;
-            border-radius: 5px;
+            margin: 12px 0;
             cursor: pointer;
         }
+    }
+    .booking-film-list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        height: fit-content;
+        padding: 0 10px 10px 10px;        
     }
 }

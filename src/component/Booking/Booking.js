@@ -1,13 +1,21 @@
 import React, { useState } from 'react'
-import BookingProvince from './BookingProvince/BookingProvince'
+import BookingTheatre from './BookingTheatre/BookingTheatre'
 import "./Booking.scss"
+import BookingFilm from './BookingFilm/BookingFilm';
 
 const Booking = () => {
-  const [province, setProvince] = useState("")
+  const [theatre, setTheatre] = useState("");
+  const [film, setFilm] = useState("")
+  const data = {
+    theatre,
+    film,
+  }
+  console.log("check data: ", data);
 
   return (
     <div className='booking'>
-      <BookingProvince setProvince={setProvince} />
+      <BookingTheatre setTheatre={setTheatre} />
+      <BookingFilm setFilm={setFilm} />
     </div>
   )
 }
