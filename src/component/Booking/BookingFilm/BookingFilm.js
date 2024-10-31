@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import "./BookingFilm.scss"
 import { IoIosArrowDropdown } from "react-icons/io";
 import { IoIosArrowDropup } from "react-icons/io";

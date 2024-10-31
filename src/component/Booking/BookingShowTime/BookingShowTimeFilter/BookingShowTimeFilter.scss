@@ -1,14 +1,13 @@
 @import '../../../../styles/color.scss';
 
-.booking-showtime-filter{
-    padding: 0px 10px 10px 10px;
+.booking-showtime-filter{    
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     .date-selector {
         gap: 5px;
-        margin: 0 4px;
+        margin: 0px;
         display: flex;
       
         .date-item {

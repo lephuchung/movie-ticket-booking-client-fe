@@ -32,19 +32,19 @@ const BookingShowTimeFilter = ({ province, dateFilter, setDateFilter, theatreFil
         return arr.filter(obj => obj.theatre.location === province.name);
     };
 
-    const AllTheatre = {
-        theatre: { name: 'Tất cả các rạp', location: province },
-        times: []
-    }
+    // const AllTheatre = {
+    //     theatre: { name: 'Tất cả các rạp', location: province },
+    //     times: []
+    // }
 
     useEffect(() => {
         const generatedDates = generateDates(5);
         const theatreArr = findTheatreByLocation(showtimes, province)
-        theatreArr.unshift(AllTheatre);
+        // theatreArr.unshift(AllTheatre);
         setDates(generatedDates);
         setTheatres(theatreArr)
         setDateFilter(generatedDates[0])
-        setTheatreFilter(theatres[0]);
+        // setTheatreFilter(theatres[0]);
     }, [province]);
 
     return (
@@ -62,7 +62,7 @@ const BookingShowTimeFilter = ({ province, dateFilter, setDateFilter, theatreFil
                 ))}
             </div>
             {/* lọc theo rạp */}
-            <div className={"theatre-selector"}>
+            {/* <div className={"theatre-selector"}>
                 <select
                     className='theatre-selector-box'
                     value={theatreFilter}
@@ -72,7 +72,7 @@ const BookingShowTimeFilter = ({ province, dateFilter, setDateFilter, theatreFil
                         <option key={cinema.theatre.name} value={cinema.theatre.name}>{cinema.theatre.name}</option>
                     ))}
                 </select>
-            </div>
+            </div> */}
         </div>
     )
 }
