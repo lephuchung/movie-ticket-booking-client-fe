@@ -9,8 +9,8 @@ const Booking = () => {
   const [openToggleProvince, setOpenToggleProvince] = useState(true)
   const [film, setFilm] = useState("");
   const [openToggleFilm, setOpenToggleFilm] = useState(false)
-  const [showtime, setShowtime] = useState();
-  const [openToggleShowTime, setOpenToggleShowTime] = useState(false)
+  const [showtime, setShowtime] = useState({ time: "", theatreName: "" });
+  const [openToggleShowTime, setOpenToggleShowTime] = useState(false);
 
   const data = {
     province,
@@ -40,6 +40,7 @@ const Booking = () => {
       <BookingShowTime
         province={province}
         film={film}
+        showtime={showtime}
         setShowtime={setShowtime}
         openToggleShowTime={openToggleShowTime}
         setOpenToggleShowTime={setOpenToggleShowTime}

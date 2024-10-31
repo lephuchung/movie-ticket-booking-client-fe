@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import "./BookingProvince.scss"
 import { IoIosArrowDropdown } from "react-icons/io";
 import { IoIosArrowDropup } from "react-icons/io";
@@ -24,7 +24,7 @@ const BookingProvince = ({
   }
 
   const handleSelectProvince = (province) => {
-    setProvince(province);
+    setProvince(province.name);
     setOpenToggleFilm(true);
     setOpenToggleProvince(false);
   }

@@ -3,11 +3,13 @@ import "./BookingShowTime.scss"
 import { IoIosArrowDropdown } from "react-icons/io";
 import { IoIosArrowDropup } from "react-icons/io";
 import BookingShowTimeFilter from './BookingShowTimeFilter/BookingShowTimeFilter';
+import ShowTimeTheatreItem from './ShowTimeTheatreItem/ShowTimeTheatreItem';
 
 const BookingShowTime = ({
     province,
     film,
-    setTime,
+    showtime,
+    setShowTime,
     openToggleShowTime,
     setOpenToggleShowTime,
     setOpenToggleProvince,
@@ -15,7 +17,11 @@ const BookingShowTime = ({
 }) => {
     const [dateFilter, setDateFilter] = useState(null)
 
-    const [theatreFilter, setTheatreFilter] = useState("Tất cả các rạp")
+    // const [theatreFilter, setTheatreFilter] = useState(
+    //     {
+    //         theatre: { name: 'Tất cả các rạp', location: province },
+    //         times: []
+    //     })
     const showtimes = [
         {
             theatre: {
@@ -87,9 +93,6 @@ const BookingShowTime = ({
         },
     ];
 
-    // console.log("dateFilter: ", dateFilter);
-    // console.log("theatreFilter: ", theatreFilter);
-
     const handleClickToggle = () => {
         setOpenToggleProvince(false);
         setOpenToggleFilm(false);
@@ -112,13 +115,17 @@ const BookingShowTime = ({
                         province={province}
                         dateFilter={dateFilter}
                         setDateFilter={setDateFilter}
-                        theatreFilter={theatreFilter}
-                        setTheatreFilter={setTheatreFilter}
+                        // theatreFilter={theatreFilter}
+                        // setTheatreFilter={setTheatreFilter}
                         showtimes={showtimes}
                     />
-                    <div className='showtime-theatre-list'>
-
-                    </div>
+                    <ShowTimeTheatreItem
+                        showtimes={showtimes}
+                        showtime={showtime}
+                        setShowTime={setShowTime}
+                        province={province}
+                    // theatreFilter={theatreFilter}
+                    />
 
                 </div>
             }
