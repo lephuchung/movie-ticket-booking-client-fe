@@ -1,14 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
 import "./ShowTimeTheatreItem.scss"
 
-const ShowTimeTheatreItem = ({ showtimes, province }) => {
-    const [selectedTime, setSelectedTime] = useState({ time: "", theatreName: "" });
+const ShowTimeTheatreItem = ({
+    showtimes,
+    province,
+    showtime,
+    setOpenToggleShowTime,
+    setOpenToggleSeat,
+    setShowtime,
+}) => {
     const handleSelectTime = (time, theatreName) => {
         const data = { time, theatreName };
-        setSelectedTime(data);
+        setShowtime(data);
+        setOpenToggleShowTime(false);
+        setOpenToggleSeat(true);
     };
-    console.log("check: ", showtimes[0].theatre.location);
-    console.log("check 2: ", province);
     return (
         <div className="showtimes">
             {showtimes
@@ -24,8 +30,8 @@ const ShowTimeTheatreItem = ({ showtimes, province }) => {
                                             key={time}
                                             className={`
                                             time 
-                                            ${selectedTime.time === time.time
-                                                    && selectedTime.theatreName === item.theatre.name
+                                            ${showtime.time === time.time
+                                                    && showtime.theatreName === item.theatre.name
                                                     ? "selected"
                                                     : ""
                                                 }

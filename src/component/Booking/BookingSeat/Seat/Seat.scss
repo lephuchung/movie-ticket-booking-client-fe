@@ -1,0 +1,28 @@
+@import '../../../../styles/color.scss';
+
+.seat {
+    width: 25px;
+    height: 25px;
+    margin: 5px;
+    text-align: center;
+    line-height: 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 10px;
+
+    &.booked {
+        background-color: $color-booked; /* Màu đỏ cho ghế đã đặt */
+        color: $color-white;
+        cursor: not-allowed;
+    }
+
+    &.selected {
+        background-color: $color-selected; /* Màu xanh cho ghế đã chọn */
+        color: $color-white;
+    }
+
+    &.available {
+        background-color: $color-button-unselected-border; /* Màu xám cho ghế còn trống */
+        color: $color-text;
+    }
+}

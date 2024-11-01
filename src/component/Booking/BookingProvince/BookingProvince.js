@@ -9,7 +9,8 @@ const BookingProvince = ({
   openToggleProvince,
   setOpenToggleProvince,
   setOpenToggleFilm,
-  setOpenToggleShowTime
+  setOpenToggleShowTime,
+  setOpenToggleSeat,
 }) => {
   const provinceArr = [
     { name: "Hải Phòng" },
@@ -18,8 +19,9 @@ const BookingProvince = ({
   ]
 
   const handleClickToggle = () => {
-    setOpenToggleFilm(false)
-    setOpenToggleShowTime(false)
+    setOpenToggleFilm(false);
+    setOpenToggleShowTime(false);
+    setOpenToggleSeat(false);
     setOpenToggleProvince(!openToggleProvince);
   }
 
