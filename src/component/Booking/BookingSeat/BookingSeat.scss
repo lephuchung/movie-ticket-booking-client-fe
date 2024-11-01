@@ -1,0 +1,96 @@
+@import '../../../styles/color.scss';
+.booking-showtime{
+    width: 70%;
+    border-radius: 5px;
+    background-color: $color-white;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);;
+    margin: 20px 0;
+    padding: 10px 14px;
+    .booking-showtime-title {
+        display: flex;
+        text-align: left;              
+        cursor: pointer;
+        .title {
+            color: $color-title;
+            font-size: 18px;
+            margin: 12px 0;
+            flex: 1;
+        }
+
+        .icon{
+            color: $color-title;
+            margin: 12px 0;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    }
+    .booking-seat-content {
+        margin-top: 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .seat-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+
+            .row-label {
+                width: 20px;
+                text-align: center;
+                font-weight: bold;
+            }
+
+        }
+
+        .screen {
+            width: 100%;
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #888;
+            border-bottom: 5px solid $color-primary;
+        }
+
+        .notice {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            .notice-item{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0 5px;
+                .seat {
+                    width: 25px;
+                    height: 25px;
+                    margin: 5px;
+                    text-align: center;
+                    line-height: 25px;
+                    cursor: default;
+                    border-radius: 4px;
+                    font-size: 10px;
+    
+                    &.booked {
+                        background-color: $color-booked;
+                        color: $color-white;
+                    }
+                
+                    &.selected {
+                        background-color: $color-selected;
+                        color: $color-white;
+                    }
+                
+                    &.available {
+                        background-color: $color-button-unselected-border;
+                        color: $color-text;
+                    }
+                }
+                .notice-label {
+                    font-size: 12px;
+                }
+            } 
+        }
+    }
+}

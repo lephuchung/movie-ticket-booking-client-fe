@@ -16,21 +16,22 @@
             gap: 0.5rem; 
             .time {
                 padding: 0.5rem 1rem;           
-                border: 1px solid #ccc;         
+                border: 1px solid $color-button-unselected-border;         
                 border-radius: 4px;  
                 font-size: 0.875rem; 
                 font-weight: normal; 
-                color: #1a202c;      
+                color: $color-text;      
               
                 transition: all 0.5s ease-in-out;
 
                 &.selected {
                 background-color: $color-button-selected;
+                border: none;
                 color: $color-white;
                 }
 
                 &:hover {
-                background-color: #e0e0e0;
+                background-color: $color-button-hover;
                 }
             }
         }

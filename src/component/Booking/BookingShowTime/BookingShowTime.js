@@ -9,11 +9,12 @@ const BookingShowTime = ({
     province,
     film,
     showtime,
-    setShowTime,
+    setShowtime,
     openToggleShowTime,
     setOpenToggleShowTime,
     setOpenToggleProvince,
     setOpenToggleFilm,
+    setOpenToggleSeat,
 }) => {
     const [dateFilter, setDateFilter] = useState(null)
 
@@ -96,6 +97,7 @@ const BookingShowTime = ({
     const handleClickToggle = () => {
         setOpenToggleProvince(false);
         setOpenToggleFilm(false);
+        setOpenToggleSeat(false)
         setOpenToggleShowTime(!openToggleShowTime);
     }
 
@@ -122,7 +124,9 @@ const BookingShowTime = ({
                     <ShowTimeTheatreItem
                         showtimes={showtimes}
                         showtime={showtime}
-                        setShowTime={setShowTime}
+                        setShowtime={setShowtime}
+                        setOpenToggleSeat={setOpenToggleSeat}
+                        setOpenToggleShowTime={setOpenToggleShowTime}
                         province={province}
                     // theatreFilter={theatreFilter}
                     />

@@ -11,10 +11,12 @@ const BookingFilm = ({
     setOpenToggleProvince,
     setOpenToggleFilm,
     setOpenToggleShowTime,
+    setOpenToggleSeat,
 }) => {
     const handleClickToggle = () => {
         setOpenToggleProvince(false);
         setOpenToggleShowTime(false);
+        setOpenToggleSeat(false);
         setOpenToggleFilm(!openToggleFilm);
     }
 
