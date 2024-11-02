@@ -3,5 +3,14 @@
 .booking{
     width: 100%;
     padding: 50px; 
+    display: flex;
     background-color: $color-background;
+    .booking-selection {
+        width: 65%;
+        margin: 0 20px;
+    }
+    .booking-result {
+        width: 30%;
+        margin: 20px;
+    }
 }

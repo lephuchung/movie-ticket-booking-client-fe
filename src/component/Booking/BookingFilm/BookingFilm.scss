@@ -1,9 +1,9 @@
 @import '../../../styles/color.scss';
 .booking-film {
-    width: 70%;
+    width: 100%;
     border-radius: 5px;
     background-color: $color-white;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
     margin: 20px 0;
 
     .booking-film-title {
