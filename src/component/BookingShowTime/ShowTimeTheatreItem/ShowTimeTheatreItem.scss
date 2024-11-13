@@ -1,0 +1,39 @@
+@import '../../../styles/color.scss';
+
+.showtimes {
+    .theatre-item {
+        padding: 14px 0;
+        .theatre-name {
+            font-size: 14px;
+            margin: 0 0 14px 0;
+            text-align: left;
+        }
+        .theatre-showtimes {
+            display: flex;
+            grid-column: span 7; 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 0.5rem; 
+            .time {
+                padding: 0.5rem 1rem;           
+                border: 1px solid $color-button-unselected-border;         
+                border-radius: 4px;  
+                font-size: 0.875rem; 
+                font-weight: normal; 
+                color: $color-text;      
+              
+                transition: all 0.5s ease-in-out;
+
+                &.selected {
+                background-color: $color-button-selected;
+                border: none;
+                color: $color-white;
+                }
+
+                &:hover {
+                background-color: $color-button-hover;
+                }
+            }
+        }
+    }
+}
