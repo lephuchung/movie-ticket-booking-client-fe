@@ -8,15 +8,21 @@ import {
 } from '../Data';
 import Carousel from '../../component/Carousel/Carousel';
 import MovieList from '../../component/MovieList/MovieList';
+import MovieListColumn from '../../component/MovieListColumn/MovieListColumn';
+import useMediaQuery from '../../customHook/useMediaQuery';
 
 
 const Home = () => {
+  const isSmallScreen = useMediaQuery('(max-width: 360px)');
+  const MovieListComponent = isSmallScreen ? MovieListColumn : MovieList;
   return (
     <div className='home'>
       <Carousel images={movie} />
-      <MovieList genre={"Phim đang chiếu"} movies={movies} />
-      <MovieList genre={"Phim hài kịch"} movies={moviesHumour} />
-      <MovieList genre={"Phim hành động"} movies={moviesAction} />
+      <div className='home-film-list-area'>
+        <MovieListComponent genre={"Phim đang chiếu"} movies={movies} />
+        <MovieListComponent genre={"Phim hài kịch"} movies={moviesHumour} />
+        <MovieListComponent genre={"Phim hành động"} movies={moviesAction} />
+      </div>
     </div>
   )
 }

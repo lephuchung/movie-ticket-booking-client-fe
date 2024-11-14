@@ -28,13 +28,13 @@ const FilmDetail = () => {
 
   return (
     <div className='film-detail-container'>
-      <div className="thumbnail" onClick={openPopup}>
+      <div className="film-detail-thumbnail" onClick={openPopup}>
         <img src={thumbnail} alt="Video Thumbnail" />
-        <div className="play-button"><AiFillPlayCircle /></div>
+        <div className="film-detail-thumbnail-play-button"><AiFillPlayCircle /></div>
       </div>
       {isOpen && (
-        <div className="popup_vid" onClick={closePopup}>
-          <div className="popup_vid-content" onClick={(e) => e.stopPropagation()}>
+        <div className="film-detail-popup-vid" onClick={closePopup}>
+          <div className="film-detail-popup-vid-content" onClick={(e) => e.stopPropagation()}>
             <iframe
               src="https://www.youtube.com/embed/ZZvIVRQ4E7I?autoplay=1"
               title="YouTube video player"
@@ -46,29 +46,29 @@ const FilmDetail = () => {
       )}
       <div className='film-detail-page-content'>
         <div className='film-detail-main-content'>
-          <div className='film-general-information'>
-            <div className='film-poster'>
+          <div className='film-detail-general-information'>
+            <div className='film-detail-poster'>
               <img src={thumbnail} alt="Poster" />
             </div>
-            <div className='film-information'>
-              <h1 className='film-title'>Học Viện Anh Hùng: You're Next</h1>
-              <div className="film-duration">
-                <FaRegClock className='icon' />
+            <div className='film-detail-information'>
+              <h1 className='film-detail-title'>Học Viện Anh Hùng: You're Next</h1>
+              <div className="film-detail-duration">
+                <FaRegClock className='film-detail-duration-icon' />
                 <span>
                   110 Phút
                 </span>
-                <FaRegCalendarAlt className='icon' />
+                <FaRegCalendarAlt className='film-detail-duration-icon' />
                 <span>
                   07/11/2024
                 </span>
               </div>
-              <div className="film-rating">
-                <FaRegStar className='icon' />
+              <div className="film-detail-rating">
+                <FaRegStar className='film-detail-rating-icon' />
                 <span>9.4</span>
               </div>
               <p>Tình trạng: Phim đang chiếu</p>
               <p>Nhà sản xuất: Đang cập nhật</p>
-              <p>Thể loại: Hoạt Hình</p>
+              <p>Thể loại: Hoạt hình</p>
               <p>Đạo diễn: Okamura Tensai</p>
             </div>
           </div>
@@ -83,16 +83,15 @@ const FilmDetail = () => {
               Liệu Torako là một cô gái, hay là một con nai hoặc thậm chí là cả hai? Cùng đón xem nhé!
             </div>
           </div>
-          <button className='booking-button'>
+          <button className='film-detail-booking-button'>
             <span>
               Đặt vé ngay
             </span>
           </button>
         </div>
 
-        <div className='film-list'>
+        <div className='film-detail-now-play-list'>
           <MovieListColumn genre={"Phim đang chiếu"} movies={movies} />
-
         </div>
       </div>
 
