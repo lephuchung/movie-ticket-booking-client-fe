@@ -1,0 +1,28 @@
+@import "../../styles/color.scss";
+
+.movie-list-column {
+    display        : flex;
+    flex-direction : column;
+    flex-wrap      : wrap;
+    justify-content: space-between;
+    max-width      : 320px;
+    padding        : 20px 0 0 0;
+
+    .movie-list-column-title {
+        text-align    : left;
+        font-size     : 18px;
+        font-weight   : 700;
+        text-transform: uppercase;
+        padding-left  : 10px;
+        color         : $color-text;
+        border-left   : 5px solid $color-primary;
+    }
+
+    .movie-list-column-content {
+        display        : flex;
+        flex-direction : column;
+        flex-wrap      : wrap;
+        justify-content: center;
+        align-items    : center;
+    }
+}

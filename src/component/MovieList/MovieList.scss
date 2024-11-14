@@ -1,57 +1,58 @@
 @import "../../styles/color.scss";
 
 .movie-list {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+  display        : flex;
+  flex-direction : column;
+  flex-wrap      : wrap;
+  justify-content: space-between;
+  max-width      : 1080px;
+  /* Giới hạn chiều rộng */
+  padding        : 20px;
+
+  .movie-list-title-area {
+    display        : flex;
     justify-content: space-between;
-    max-width: 1080px; /* Giới hạn chiều rộng */
-    padding: 20px;
-    .movie-list-title-area {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      min-width: 300px;
+    align-items    : center;
+    margin-bottom  : 20px;
+    min-width      : 300px;
 
-      .movie-list-title {
-        text-align: left;
-        font-size: 18px;
-        font-weight: 700;
-        text-transform: uppercase;
-        padding-left: 10px;        
-        color: $color-text;
-        border-left: 5px solid $color-primary;
-      }
-
-      .movie-list-title-button {
-        width: 60px;
-        height: 30px;
-        line-height: 30px;
-        text-align: center;
-        font-size: 14px;                       
-        
-        box-sizing: border-box;
-        color: $color-text;
-        background-color: $color-white;
-        border: 1px solid $color-primary;
-      }
-      
-      .movie-list-title-button:hover {        
-        font-size: 14px; 
-        font-weight: 700;                                  
-        color: $color-white;
-        background-color: $color-primary;                
-      }
+    .movie-list-title {
+      text-align    : left;
+      font-size     : 18px;
+      font-weight   : 700;
+      text-transform: uppercase;
+      padding-left  : 10px;
+      color         : $color-text;
+      border-left   : 5px solid $color-primary;
     }
-    
 
-    .movie-list-content {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 13px;
+    .movie-list-title-button {
+      width      : 60px;
+      height     : 30px;
+      line-height: 30px;
+      text-align : center;
+      font-size  : 14px;
+
+      box-sizing      : border-box;
+      color           : $color-text;
+      background-color: $color-white;
+      border          : 1px solid $color-primary;
+    }
+
+    .movie-list-title-button:hover {
+      font-size       : 14px;
+      font-weight     : 700;
+      color           : $color-white;
+      background-color: $color-primary;
     }
   }
-  
+
+
+  .movie-list-content {
+    display        : flex;
+    flex-wrap      : wrap;
+    justify-content: center;
+    align-items    : center;
+    gap            : 13px;
+  }
+}

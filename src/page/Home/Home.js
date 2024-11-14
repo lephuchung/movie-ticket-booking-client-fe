@@ -5,7 +5,7 @@ import {
   movies,
   moviesAction,
   moviesHumour
-} from './Data';
+} from '../Data';
 import Carousel from '../../component/Carousel/Carousel';
 import MovieList from '../../component/MovieList/MovieList';
 
