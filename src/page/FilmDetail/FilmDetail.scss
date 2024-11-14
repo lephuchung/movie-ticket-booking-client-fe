@@ -3,7 +3,7 @@
 .film-detail-container {
   width: 100%;
 
-  .thumbnail {
+  .film-detail-thumbnail {
     position        : relative;
     width           : 100vw;
     height          : 70vh;
@@ -17,7 +17,7 @@
       object-fit: cover;
     }
 
-    .play-button {
+    .film-detail-thumbnail-play-button {
       position     : absolute;
       top          : 50%;
       left         : 50%;
@@ -27,6 +27,11 @@
       box-shadow   : 0px 0px 15px rgba(0, 0, 0, 0.3);
       border-radius: 50%;
       padding      : 10px;
+      transition   : color 0.5s ease;
+
+      &:hover {
+        color: $color-button-hover;
+      }
     }
   }
 
@@ -37,11 +42,19 @@
     margin         : auto;
     z-index        : 10;
 
+    @media (max-width: 1200px) {
+      margin: 0 20px;
+    }
+
     .film-detail-main-content {
       margin-right: 10px;
       transform   : translateY(-60px);
 
-      .film-general-information {
+      @media (max-width: 1200px) {
+        margin: 0;
+      }
+
+      .film-detail-general-information {
         position             : relative;
         width                : 100%;
         min-height           : 400px;
@@ -50,37 +63,46 @@
         gap                  : 1rem;
         margin-bottom        : 10px;
 
-        .film-poster {
+        .film-detail-poster {
           grid-column     : span 1;
-          background-color: #333;
+          background-color: transparent;
           border-radius   : 2px;
           width           : 100%;
           display         : flex;
           justify-content : center;
           align-items     : center;
-          box-shadow      : 0px 0px 15px rgba(0, 0, 0, 0.1);
           overflow        : hidden;
 
           img {
-            width        : 98%;
-            padding      : 2px;
-            object-fit   : cover;
+            width     : 98%;
+            object-fit: cover;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+
             z-index      : 10;
             border-radius: 2px;
           }
+
+          @media (max-width: 820px) {
+            display: none;
+          }
         }
 
-        .film-information {
+        .film-detail-information {
           grid-column: span 2;
           padding    : 120px 20px 20px 20px;
           text-align : left;
 
-          .film-title {
+          @media (max-width: 820px) {
+            grid-column: span 3;
+
+          }
+
+          .film-detail-title {
             font-size    : 24px;
             margin-bottom: 10px;
           }
 
-          .film-duration {
+          .film-detail-duration {
             font-size    : 14px;
             color        : $color-gray;
             margin-bottom: 10px;
@@ -93,7 +115,7 @@
 
             }
 
-            .icon {
+            .film-detail-duration-icon {
               color       : $color-primary;
               font-size   : 16px;
               line-height : 14px;
@@ -101,13 +123,13 @@
             }
           }
 
-          .film-rating {
+          .film-detail-rating {
             display    : flex;
             align-items: center;
             font-size  : 14px;
             color      : $color-primary;
 
-            .icon {
+            .film-detail-rating-icon {
               font-size   : 16px;
               margin-right: 5px;
             }
@@ -142,18 +164,24 @@
         }
       }
 
-      .booking-button {
+      .film-detail-booking-button {
         height          : 32px;
         margin          : auto;
         border          : none;
         border-radius   : 15px;
         background-color: $color-primary;
+        color           : $color-white;
         display         : flex;
         justify-content : center;
         align-items     : center;
+        transition      : background-color 0.5s ease;
+
+        &:hover {
+          color           : $color-text;
+          background-color: $color-button-hover;
+        }
 
         span {
-          color      : $color-white;
           line-height: 30px;
           padding    : 5px 20px;
           font-size  : 16px;
@@ -162,12 +190,16 @@
       }
     }
 
-    .film-list {
+    .film-detail-now-play-list {
       min-width: 320px;
+
+      @media (max-width: 1200px) {
+        display: none;
+      }
     }
   }
 
-  .popup_vid {
+  .film-detail-popup-vid {
     display         : flex;
     position        : fixed;
     top             : 0;
@@ -179,7 +211,7 @@
     align-items     : center;
     z-index         : 100;
 
-    .popup_vid-content {
+    .film-detail-popup-vid-content {
       position        : relative;
       width           : 90%;
       height          : 90%;
