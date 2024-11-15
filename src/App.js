@@ -8,6 +8,7 @@ import CategoryDetail from './page/CategoryDetail/CategoryDetail';
 import Category from './page/Category/Category';
 import Booking from './page/Booking/Booking';
 import NotFound from './page/NotFound/NotFound';
+import Profile from './page/Profile/Profile';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path='/category/:categoryName' element={<CategoryDetail />} />
             <Route path='/category' element={<Category />} />
             <Route path='/booking' element={<Booking />} />
+            <Route path='/profile' element={<Profile />} />
             <Route path='/' element={<Home />} />
             <Route path='*' element={<NotFound />} />
           </Routes>

@@ -19,12 +19,16 @@
         display        : flex;
         justify-content: center;
         align-items    : center;
-        transition     : transform border-radius 0.5s ease;
+        transition     : transform border-radius background-color 0.5s ease;
 
         &:hover {
             border-radius   : 10px;
             background-color: $color-button-hover;
             transform       : scale(1.05);
+        }
+
+        &:active {
+            background-color: $color-button-active;
         }
 
         .film-card-small-poster {
