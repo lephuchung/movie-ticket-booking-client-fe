@@ -1,55 +1,57 @@
+@import '../../styles/color.scss';
+
 .ticket-summary {
-    width: 100%;
-    max-width: 600px;
-    margin: auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
-    font-family: Arial, sans-serif;
+    width           : 100%;
+    max-width       : 600px;
+    margin          : auto;
+    background-color: $color-white;
+    padding         : 20px;
+    border-radius   : 8px;
+    box-shadow      : 0px 0px 15px rgba(0, 0, 0, 0.3);
+    font-family     : Arial, sans-serif;
 
     .header {
-        display: flex;
-        align-items: center;
+        display        : flex;
+        align-items    : center;
         justify-content: space-between;
-        font-weight: bold;
-        margin-bottom: 10px;
+        font-weight    : bold;
+        margin-bottom  : 10px;
 
-        .film-title{
-            font-size: 14px;
+        .film-title {
+            font-size  : 14px;
             line-height: 20px;
-            text-align: left;
-            margin: 0;
-            
+            text-align : left;
+            margin     : 0;
+
         }
 
         .rating {
-            background-color: #ff9f1a;
-            color: #fff;
-            width: 70px;
-            padding: 2px 8px;
-            border-radius: 4px;
-            line-height: 20px;
-            font-size: 14px;
+            background-color: $color-primary;
+            color           : $color-white;
+            width           : 70px;
+            padding         : 2px 8px;
+            border-radius   : 4px;
+            line-height     : 20px;
+            font-size       : 14px;
         }
     }
 
     .film-info {
-        display: flex;
+        display      : flex;
         margin-bottom: 10px;
 
         .film-poster {
-            width: 100px;
-            height: 140px;
-            object-fit: cover;
-            margin-right: 15px;
+            width        : 100px;
+            height       : 140px;
+            object-fit   : cover;
+            margin-right : 15px;
             border-radius: 4px;
         }
 
         .details {
             p {
-                margin: 4px 0;
-                font-size: 0.9rem;
+                margin    : 4px 0;
+                font-size : 0.9rem;
                 text-align: left;
 
                 &:nth-child(1) {
@@ -64,19 +66,21 @@
     }
 
     hr {
-        border: none;
-        border-top: 1px dashed #333;
-        margin: 10px 0;
+        border    : none;
+        border-top: 1px dashed $color-text;
+        margin    : 10px 0;
     }
 
     .seat-info {
-        display: flex;
+        display        : flex;
         justify-content: space-between;
         // align-items: center;
-        font-size: 0.9rem;
+        font-size      : 0.9rem;
+
         .seat-number {
-            font-size: 14px;
+            font-size : 14px;
             text-align: left;
+
             p {
                 margin: 0;
             }
@@ -84,46 +88,46 @@
 
         .seat-price {
             font-weight: bold;
-            text-align: right;
-            width: 100px;
+            text-align : right;
+            width      : 100px;
         }
     }
 
     .total {
-        display: flex;
+        display        : flex;
         justify-content: space-between;
-        font-size: 1rem;
-        font-weight: bold;
-        margin-top: 10px;
+        font-size      : 1rem;
+        font-weight    : bold;
+        margin-top     : 10px;
 
         .total-amount {
-            color: #ff9f1a;
+            color: $color-primary;
         }
     }
 
     .actions {
-        display: flex;
+        display        : flex;
         justify-content: space-between;
-        margin-top: 20px;
+        margin-top     : 20px;
 
         button {
-            width: 48%;
-            padding: 10px;
-            font-size: 1rem;
-            font-weight: bold;
-            border: none;
+            width        : 48%;
+            padding      : 10px;
+            font-size    : 1rem;
+            font-weight  : bold;
+            border       : none;
             border-radius: 4px;
-            cursor: pointer;
+            cursor       : pointer;
         }
 
         .back-button {
             background-color: #ddd;
-            color: #333;
+            color           : $color-text;
         }
 
         .continue-button {
-            background-color: #ff9f1a;
-            color: #fff;
+            background-color: $color-primary;
+            color           : $color-white;
         }
     }
 }

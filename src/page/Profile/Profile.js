@@ -41,7 +41,7 @@ const Profile = () => {
             </div>
 
             <div class="profile-purchase-history">
-                <h3>Các Vé Đã Mua</h3>
+                <h3 className='profile-purchase-history-title'>Các Vé Đã Mua</h3>
                 <TicketBoughtTable tickets={tickets} />
             </div>
         </div>
