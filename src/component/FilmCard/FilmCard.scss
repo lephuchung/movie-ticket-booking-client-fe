@@ -20,6 +20,7 @@
         align-items    : center;
         margin-bottom  : 10px;
         transition     : border-radius 0.5s ease;
+        border-radius  : 10px;
 
         @media (max-width: 820px) {
             width: 180px;
@@ -30,7 +31,8 @@
         }
 
         &:hover {
-            border-radius: 10px;
+            border-radius: 0px;
+            transform    : scale(1.03);
         }
 
         .film-card-rating {
@@ -47,11 +49,12 @@
         }
 
         .film-card-poster {
-            width     : 100%;
-            transition: border-radius 0.5s ease;
+            width        : 100%;
+            transition   : border-radius 0.5s ease;
+            border-radius: 10px;
 
             &:hover {
-                border-radius: 10px;
+                border-radius: 0px;
             }
         }
 

@@ -19,9 +19,9 @@ const Home = () => {
     <div className='home'>
       <Carousel images={movie} />
       <div className='home-film-list-area'>
-        <MovieListComponent genre={"Phim đang chiếu"} movies={movies} />
-        <MovieListComponent genre={"Phim hài kịch"} movies={moviesHumour} />
-        <MovieListComponent genre={"Phim hành động"} movies={moviesAction} />
+        <MovieListComponent genre={"đang chiếu"} movies={movies} />
+        <MovieListComponent genre={"hài kịch"} movies={moviesHumour} />
+        <MovieListComponent genre={"hành động"} movies={moviesAction} />
       </div>
     </div>
   )
