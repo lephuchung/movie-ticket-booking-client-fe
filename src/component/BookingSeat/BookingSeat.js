@@ -201,8 +201,8 @@ const BookingSeat = ({
     };
 
     return (
-        <div className='booking-showtime'>
-            <div className='booking-showtime-title' onClick={() => handleClickToggle()}>
+        <div className='booking-seat'>
+            <div className='booking-seat-title' onClick={() => handleClickToggle()}>
                 <h2 className='title'>Chọn ghế</h2>
                 {openToggleSeat
                     ? <IoIosArrowDropup className='icon' />
