@@ -1,6 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./TicketBoughtTable.scss"
+import TicketDetail from '../TicketDetail/TicketDetail';
 const TicketBoughtTable = ({ tickets }) => {
+    const [ticketSelection, setTicketSelection] = useState(null);
+    const [openPopupTicket, setOpenPopupTicket] = useState(false);
+    const handleOnClickTicket = (ticket) => {
+        setTicketSelection(ticket);
+        setOpenPopupTicket(true);
+    }
+    const handleClosePopupTicket = () => {
+        setTicketSelection(null);
+        setOpenPopupTicket(false);
+    }
     return (
         <div className="ticket-table-container">
             <table className="ticket-table">
@@ -16,7 +27,7 @@ const TicketBoughtTable = ({ tickets }) => {
                 </thead>
                 <tbody>
                     {tickets.map((ticket, index) => (
-                        <tr key={index}>
+                        <tr key={index} onClick={() => handleOnClickTicket(ticket)}>
                             <td>{ticket.filmName}</td>
                             <td>{ticket.showtime}</td>
                             <td>{ticket.seatNumber}</td>
@@ -27,6 +38,9 @@ const TicketBoughtTable = ({ tickets }) => {
                     ))}
                 </tbody>
             </table>
+            {openPopupTicket && ticketSelection &&
+                <TicketDetail ticket={ticketSelection} onClose={handleClosePopupTicket} />
+            }
         </div>
     );
 }

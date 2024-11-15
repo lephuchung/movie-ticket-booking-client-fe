@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "./CategoryCard.scss"
 import { Link } from 'react-router-dom'
-import { getRandomColor } from '../../utils/getRandomColor';
 import { getRandomGradient } from '../../utils/getRandomGradient';
 
 const CategoryCard = ({ category }) => {

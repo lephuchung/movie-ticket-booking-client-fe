@@ -12,13 +12,38 @@ $box-shadow      : 0px 4px 12px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
     color      : $color-gray;
 
+    @media (max-width: 700px) {
+        flex-direction: column;
+    }
+
     .profile-info {
-        width           : 300px;
-        text-align      : center;
-        background-color: #fff;
-        border-radius   : 8px;
-        padding         : 1.5rem;
-        box-shadow      : $box-shadow;
+        width              : 25%;
+        // min-width       : 280px;
+        text-align         : center;
+        background-color   : #fff;
+        border-radius      : 8px;
+        padding            : 1.5rem;
+        box-shadow         : $box-shadow;
+
+        @media (max-width: 1200px) {
+            width: 30%;
+        }
+
+        @media (max-width: 1000px) {
+            width: 45%;
+        }
+
+        @media (max-width: 870px) {
+            width: 50%;
+        }
+
+        @media (max-width: 870px) {
+            width: 50%;
+        }
+
+        @media (max-width: 700px) {
+            width: 100%;
+        }
 
         .profile-info-header {
             width: 100%;
@@ -50,6 +75,7 @@ $box-shadow      : 0px 4px 12px rgba(0, 0, 0, 0.1);
                 color     : $color-gray;
                 text-align: left;
                 width     : 100%;
+                word-wrap : break-word;
 
                 strong {
                     color: $color-text;
@@ -99,15 +125,32 @@ $box-shadow      : 0px 4px 12px rgba(0, 0, 0, 0.1);
         border-radius   : 8px;
         padding         : 1.5rem;
         box-shadow      : $box-shadow;
+        box-sizing      : border-box;
 
-        h3 {
-            font-size    : 20px;
-            font-weight  : 600;
-            color        : $color-text;
-            margin-bottom: 10px;
-            text-align   : left;
-            padding-left : 10px;
-            border-left  : 5px solid $color-primary;
+        @media (max-width: 1200px) {
+            width: 55%;
+        }
+
+        @media (max-width: 1000px) {
+            width: 40%;
+        }
+
+        @media (max-width: 870px) {
+            width: 50%;
+        }
+
+        @media (max-width: 700px) {
+            width: 100%;
+        }
+
+        .profile-purchase-history-title {
+            font-size   : 20px;
+            font-weight : 600;
+            color       : $color-text;
+            margin      : 10px 0;
+            text-align  : left;
+            padding-left: 10px;
+            border-left : 5px solid $color-primary;
         }
 
         .ticket {
