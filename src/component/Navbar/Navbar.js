@@ -7,7 +7,8 @@ const Navbar = () => {
             <NavLink to={'/'}>Trang chủ</NavLink>
             <NavLink to={"/booking"}>Đặt vé</NavLink>
             <NavLink to={"/film"}>Phim</NavLink>
-            <NavLink to={"/category"}>Thể loại</NavLink>            
+            <NavLink to={"/category"}>Thể loại</NavLink>
+            <NavLink to={"/profile"}>Cá nhân</NavLink>
         </div>
     )
 }

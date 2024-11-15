@@ -1,0 +1,83 @@
+.ticket-table-container {
+    padding         : 1rem;
+    background-color: #f9f9f9;
+    border-radius   : 8px;
+    height          : 100%;
+    width           : 100%;
+    box-shadow      : 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-collapse : collapse;
+
+    .ticket-table {
+        width     : 800px;
+        overflow-x: auto;
+
+        border-collapse: collapse;
+        display        : block; // Bật chế độ block để có thể scroll tbody
+
+        thead {
+            display: block;
+            width  : 100%;
+
+            tr {
+                display         : block;
+                width           : 100%;
+                box-sizing      : border-box;
+                background-color: #4CAF50;
+
+                &:hover {
+                    background-color: #4CAF50;
+
+                }
+
+                th {
+                    padding         : 5px 10px;
+                    width           : 120px;
+                    text-align      : left;
+                    border-bottom   : 1px solid #e0e0e0;
+                    background-color: #4CAF50;
+
+                    font-size: 12px;
+                    color    : white;
+
+                    z-index: 1;
+
+                    &:first-child {
+                        width: 200px;
+                    }
+                }
+
+
+            }
+
+        }
+
+        tbody {
+            display   : block;
+            max-height: 300px;
+            width     : 800px;
+            box-sizing: border-box;
+            overflow-y: auto;
+
+            tr {
+                width: 800px;
+
+                td {
+                    padding      : 5px 10px;
+                    text-align   : left;
+                    border-bottom: 1px solid #e0e0e0;
+                    font-size    : 12px;
+                    width        : 120px; // Đảm bảo mỗi ô chiếm diện tích phù hợp
+
+                    &:first-child {
+                        width: 200px;
+                    }
+                }
+            }
+
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    }
+}

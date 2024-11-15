@@ -32,6 +32,7 @@
       &:hover {
         color: $color-button-hover;
       }
+
     }
   }
 
@@ -179,6 +180,11 @@
         &:hover {
           color           : $color-text;
           background-color: $color-button-hover;
+        }
+
+        &:active {
+          color           : $color-text;
+          background-color: $color-button-active;
         }
 
         span {
