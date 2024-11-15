@@ -1,0 +1,33 @@
+@import "../../../styles/color.scss";
+
+.booking-film-item-small {
+    width          : 100%;
+    color          : $color-text;
+    font-size      : 12px;
+    padding        : 4px;
+    margin         : 4px;
+    border-radius  : 5px;
+    cursor         : pointer;
+    display        : flex;
+    justify-content: flex-start;
+    align-items    : center;
+
+    .booking-film-item-small-poster {
+        width: 10%;
+    }
+
+    .booking-film-item-small-title {
+        width         : 80%;
+        max-height    : 60px;
+        text-transform: capitalize;
+        text-overflow : ellipsis;
+        margin-left   : 8px;
+        text-align    : left;
+        color         : $color-text;
+        font-weight   : 700;
+        line-height   : 120%;
+        font-size     : 16px;
+        cursor        : pointer;
+        overflow      : hidden;
+    }
+}

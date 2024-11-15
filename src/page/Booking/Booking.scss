@@ -1,16 +1,45 @@
 @import '../../styles/color.scss';
 
-.booking{
-    width: 100%;
-    padding: 50px; 
-    display: flex;
+.booking {
+    width           : 100%;
+    padding         : 50px;
+    display         : flex;
     background-color: $color-background;
-    .booking-selection {
-        width: 65%;
-        margin: 0 20px;
+
+    @media (max-width: 870px) {
+        flex-direction: column;
     }
+
+    @media (max-width: 600px) {
+        flex-direction: column;
+        padding       : 0px;
+    }
+
+    .booking-selection {
+        width : 65%;
+        margin: 0 20px;
+
+        @media (max-width: 1080px) {
+            width: 55%;
+        }
+
+        @media (max-width: 870px) {
+            width : 90%;
+            margin: auto;
+        }
+    }
+
     .booking-result {
-        width: 30%;
+        width : 30%;
         margin: 20px;
+
+        @media (max-width: 1080px) {
+            width: 40%;
+        }
+
+        @media (max-width: 870px) {
+            width : 90%;
+            margin: auto;
+        }
     }
 }
