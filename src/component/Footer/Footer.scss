@@ -1,0 +1,60 @@
+@import '../../styles/color.scss';
+
+.footer {
+    width           : 100%;
+    background-color: #162447;
+    color           : #ffffff;
+    text-align      : left;
+    padding         : 20px 0;
+
+    .footer-content {
+        max-width  : 1200px;
+        margin     : 0 auto;
+        padding    : 0 20px;
+        display    : flex;
+        align-items: center;
+
+        @media (max-width: 570px) {
+            flex-direction: column;
+        }
+
+        .footer-logo {
+            width       : 150px;
+            height      : 150px;
+            margin-right: 20px;
+            padding     : 10px;
+            box-sizing  : border-box;
+            border-right: 2px solid $color-primary;
+
+            @media (max-width: 570px) {
+                border-right : none;
+                border-bottom: 2px solid $color-primary;
+                margin-bottom: 20px;
+            }
+        }
+
+        .footer-text {
+            .footer-text-title {
+                font-size  : 14px;
+                font-weight: 700;
+                color      : $color-white;
+            }
+
+            .footer-text-member-area {
+                display: flex;
+                gap    : 20px;
+
+                @media (max-width: 395px) {
+                    flex-direction: column;
+                    gap           : 0;
+                }
+
+                .footer-text-member {
+                    font-size  : 12px;
+                    font-weight: 500;
+                    color      : $color-white;
+                }
+            }
+        }
+    }
+}
