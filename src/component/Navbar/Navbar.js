@@ -1,14 +1,22 @@
 import { NavLink } from 'react-router-dom';
+import logo from './cinema-logo.png'
 import './Navbar.scss';
 
 const Navbar = () => {
     return (
         <div className="topnav">
-            <NavLink to={'/'}>Trang chủ</NavLink>
-            <NavLink to={"/booking"}>Đặt vé</NavLink>
-            <NavLink to={"/film"}>Phim</NavLink>
-            <NavLink to={"/category"}>Thể loại</NavLink>
-            <NavLink to={"/profile"}>Cá nhân</NavLink>
+            <div className="left-links">
+                <NavLink to="/" exact activeClassName="active">
+                    <img src={logo} className='topnav-logo' />
+                </NavLink>
+            </div>
+
+            <div className="right-links">
+                <NavLink to="/booking" activeClassName="active">Đặt vé</NavLink>
+                <NavLink to="/film" activeClassName="active">Phim</NavLink>
+                <NavLink to="/category" activeClassName="active">Thể loại</NavLink>
+                <NavLink to="/profile" activeClassName="active">Cá nhân</NavLink>
+            </div>
         </div>
     )
 }

@@ -1,24 +1,70 @@
+@import '../../styles/color.scss';
+
 .topnav {
-    width: 100%;
-    overflow: hidden;
-    background-color: grey;
+  width           : 100%;
+  display         : flex;
+  justify-content : space-between;
+  /* Tách các nhóm link sang hai phía */
+  align-items     : center;
+  position        : fixed;
+  top             : 0;
+  left            : 0;
+  background-color: $color-white;
+  padding         : 10px 20px;
+  box-shadow      : 0 4px 6px rgba(0, 0, 0, 0.3);
+  z-index         : 1;
+
+  .left-links {
+    display: flex;
+
+    .topnav-logo {
+      width : 40px;
+      height: 40px;
+    }
+
+    a {
+      text-decoration: none;
+      color          : $color-text;
+      padding        : 0px;
+      border-radius  : 999px;
+      transition     : background-color 0.3s ease, transform 0.2s ease;
+
+      &:hover {
+        color    : $color-white;
+        transform: scale(1.1);
+      }
+
+      &.active {
+        background-color: $color-primary;
+        color           : $color-white;
+      }
+    }
   }
-  
-  a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
+
+  .right-links {
+    display: flex;
+    gap    : 20px;
+    /* Khoảng cách giữa các link */
+
+    a {
+      text-decoration: none;
+      color          : $color-text;
+      font-size      : 16px;
+      font-weight    : 500;
+      padding        : 8px 12px;
+      border-radius  : 4px;
+      transition     : background-color 0.3s ease, transform 0.2s ease;
+
+      &:hover {
+        background-color: $color-navbar-hover;
+        color           : $color-white;
+        transform       : scale(1.1);
+      }
+
+      &.active {
+        background-color: $color-primary;
+        color           : $color-white;
+      }
+    }
   }
-  
-  a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  a.active {
-    background-color: #04AA6D;
-    color: white;
-  }
+}
