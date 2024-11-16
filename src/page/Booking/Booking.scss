@@ -5,6 +5,8 @@
     padding         : 50px;
     display         : flex;
     background-color: $color-background;
+    margin-top      : 50px;
+
 
     @media (max-width: 870px) {
         flex-direction: column;
