@@ -9,6 +9,7 @@ import Category from './page/Category/Category';
 import Booking from './page/Booking/Booking';
 import NotFound from './page/NotFound/NotFound';
 import Profile from './page/Profile/Profile';
+import Footer from './component/Footer/Footer';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
+          <Footer />
         </header>
       </div>
     </BrowserRouter>
