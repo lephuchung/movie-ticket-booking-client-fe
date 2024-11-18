@@ -12,11 +12,11 @@ const FilmCard = ({ film }) => {
     // }
 
     return (
-        <Link to={`/film/${film.title}`} className='film-card-link'>
+        <Link to={`/film/${film.Title}`} className='film-card-link'>
             <div className='film-card'>
-                <span className='film-card-rating'>{film.rating}/10</span>
-                <img src={film?.poster} alt="" className='film-card-poster' />
-                <span className='film-card-title'>{film.title}</span>
+                <span className='film-card-rating'>{film.Rating}/10</span>
+                <img src={film?.PosterUrl} alt="" className='film-card-poster' />
+                <span className='film-card-title'>{film.Title}</span>
             </div>
         </Link>
 

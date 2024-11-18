@@ -50,6 +50,7 @@
 
         .film-card-poster {
             width        : 100%;
+            border       : 1px solid $color-gray;
             transition   : border-radius 0.5s ease;
             border-radius: 10px;
 
