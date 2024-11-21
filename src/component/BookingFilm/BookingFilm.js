@@ -9,6 +9,7 @@ import useMediaQuery from '../../customHook/useMediaQuery';
 const BookingFilm = ({
     province,
     setFilm,
+    films,
     openToggleFilm,
     setOpenToggleProvince,
     setOpenToggleFilm,
@@ -41,15 +42,18 @@ const BookingFilm = ({
                 }
 
             </div>
-            {openToggleFilm && province &&
+            {openToggleFilm && province && films &&
                 <div className='booking-film-list'>
-                    <BookingFilmItemComponent className="booking-film-item" setFilm={handleClickFilmItem} />
-                    <BookingFilmItemComponent className="booking-film-item" setFilm={handleClickFilmItem} />
-                    <BookingFilmItemComponent className="booking-film-item" setFilm={handleClickFilmItem} />
-                    <BookingFilmItemComponent className="booking-film-item" setFilm={handleClickFilmItem} />
-                    <BookingFilmItemComponent className="booking-film-item" setFilm={handleClickFilmItem} />
-                    <BookingFilmItemComponent className="booking-film-item" setFilm={handleClickFilmItem} />
-                    <BookingFilmItemComponent className="booking-film-item" setFilm={handleClickFilmItem} />
+                    {films.map((film) => {
+                        return (
+                            <BookingFilmItemComponent
+                                key={film}
+                                className="booking-film-item"
+                                film={film}
+                                setFilm={handleClickFilmItem}
+                            />
+                        )
+                    })}
                 </div>
             }
         </div>

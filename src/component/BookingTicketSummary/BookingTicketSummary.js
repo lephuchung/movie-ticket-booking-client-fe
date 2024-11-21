@@ -4,9 +4,9 @@ import "./BookingTicketSummary.scss"
 
 const BookingTicketSummary = ({
     film = {
-        title: "hehe",
-        rating: "8.5/10",
-        posterUrl: "../BookingFilm/BookingFilmItem/image.png"
+        Title: "hehe",
+        Rating: "8.5/10",
+        PosterUrl: "../BookingFilm/BookingFilmItem/image.png"
     },
     showtime,
     seats,
@@ -14,17 +14,17 @@ const BookingTicketSummary = ({
 }) => {
     return (
         <div className="ticket-summary">
-            {film.title &&
+            {film.Title &&
                 <div className="header">
-                    <h1 className='film-title'>{film?.title}</h1>
-                    <span className="rating">{film?.rating}</span>
+                    <h1 className='film-title'>{film?.Title}</h1>
+                    <span className="rating">{film?.Rating}/10</span>
                 </div>
             }
 
             <div className="film-info">
-                {film.posterUrl
-                    ? <img src={film.posterUrl} alt={film?.title} className="film-poster" />
-                    : <img src={emptyPoster} alt={film?.title} className="film-poster" />
+                {film.PosterUrl
+                    ? <img src={film.PosterUrl} alt={film?.Title} className="film-poster" />
+                    : <img src={emptyPoster} alt={film?.Title} className="film-poster" />
                 }
 
                 <div className="details">

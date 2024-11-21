@@ -6,6 +6,7 @@ import { IoIosArrowDropup } from "react-icons/io";
 const BookingProvince = ({
   province,
   setProvince,
+  provinces,
   openToggleProvince,
   setOpenToggleProvince,
   setOpenToggleFilm,
@@ -26,7 +27,7 @@ const BookingProvince = ({
   }
 
   const handleSelectProvince = (province) => {
-    setProvince(province.name);
+    setProvince(province.Location);
     setOpenToggleFilm(true);
     setOpenToggleProvince(false);
   }
@@ -43,14 +44,14 @@ const BookingProvince = ({
       </div>
       {openToggleProvince &&
         <div className='booking-province-list'>
-          {provinceArr.map((item) => {
+          {provinces.map((item) => {
             return (
               <div
-                key={item.name}
-                className={`booking-province-item ${province.name === item.name ? 'active' : ''}`}
+                key={item.Location}
+                className={`booking-province-item ${province.Location === item.Location ? 'active' : ''}`}
                 onClick={() => handleSelectProvince(item)}
               >
-                {item.name}
+                {item.Location}
               </div>
             )
           })}

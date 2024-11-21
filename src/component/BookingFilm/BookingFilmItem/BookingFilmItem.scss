@@ -1,36 +1,45 @@
 @import "../../../styles/color.scss";
-.booking-film-item{
-    width: 175px;
-    color: $color-text;
-    font-size: 14px;
-    padding: 4px;
-    margin: 4px;    
-    border-radius: 5px;
-    cursor: pointer;
-    display: flex; 
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center;    
+
+.booking-film-item {
+    width          : 175px;
+    color          : $color-text;
+    font-size      : 14px;
+    padding        : 4px;
+    margin         : 4px;
+    border-radius  : 5px;
+    cursor         : pointer;
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items    : center;
+    border         : solid 1px $color-gray;
+
     .booking-film-poster {
         width: 100%;
-        
     }
 
-    .booking-film-title{
+    .booking-film-title {
+        width         : 100%;
+        height        : 20px;
+        line-height   : 20px;
         text-transform: capitalize;
-        position: relative;
-        margin-bottom: 0px;
-        display: flex;
-        justify-content: center; 
-        align-items: center;
-        color: $color-text;
-        font-weight: 700;
-        line-height: 120%;
-        font-size: 16px;
-        margin-top: 10px;
-        cursor: pointer;
-        overflow: hidden;
-        width: 160px;
-        text-overflow: ellipsis;
+        text-overflow : ellipsis;
+        text-align    : left;
+        margin-bottom : 0px;
+        color         : $color-text;
+        font-weight   : 700;
+        font-size     : 14px;
+        margin-top    : 10px;
+        cursor        : pointer;
+        overflow      : hidden;
+        padding       : 0;
+    }
+
+    &:hover {
+        transform: scale(1.05);
+
+        .booking-film-poster {
+            border-radius: 5px;
+        }
     }
 }

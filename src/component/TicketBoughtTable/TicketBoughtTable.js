@@ -16,7 +16,7 @@ const TicketBoughtTable = ({ tickets }) => {
         <div className="ticket-table-container">
             <table className="ticket-table">
                 <thead>
-                    <tr>
+                    <tr className='table-head-row'>
                         <th>Film</th>
                         <th>Showtime</th>
                         <th>Seat</th>
@@ -27,7 +27,7 @@ const TicketBoughtTable = ({ tickets }) => {
                 </thead>
                 <tbody>
                     {tickets.map((ticket, index) => (
-                        <tr key={index} onClick={() => handleOnClickTicket(ticket)}>
+                        <tr className='table-body-row' key={index} onClick={() => handleOnClickTicket(ticket)}>
                             <td>{ticket.filmName}</td>
                             <td>{ticket.showtime}</td>
                             <td>{ticket.seatNumber}</td>
