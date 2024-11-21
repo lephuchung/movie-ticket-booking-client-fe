@@ -1,15 +1,15 @@
 import React from 'react'
-// import poster from "./image.png"
+import emptyPoster from "./img-blank.bb695736.svg"
 import "./FilmCardSmall.scss"
 import { Link } from 'react-router-dom'
 
-const FilmCardSmall = ({ film }) => {
-
-    // const film = {
-    //     title: "Venom: Kèo Cuối",
-    //     rating: "8.5/10",
-    //     poster: "https://cdn.galaxycine.vn/media/2024/10/30/the-paradise-of-thorns-1_1730262436681.jpg"
-    // }
+const FilmCardSmall = ({
+    film = {
+        Title: "Không xác định",
+        Rating: "10/10",
+        PosterUrl: emptyPoster
+    }
+}) => {
 
     return (
         <Link to={`/film/${film.Title}`} className='film-card-small-link'>

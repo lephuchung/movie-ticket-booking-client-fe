@@ -11,8 +11,8 @@ const ShowTimeTheatreItem = ({
     setOpenToggleSeat,
     setShowtime,
 }) => {
-    const handleSelectTime = (time, theatreName) => {
-        const data = { time, theatreName };
+    const handleSelectTime = (time, theatreName, showtimeId) => {
+        const data = { showtimeId };
         setShowtime(data);
         setOpenToggleShowTime(false);
         setOpenToggleSeat(true);
@@ -26,6 +26,7 @@ const ShowTimeTheatreItem = ({
                         <h3 className='theatre-name'>{item.theater.theaterId}</h3>
                         <div className='theatre-showtimes'>{item.times
                             .filter((time) => getDateFromISOTime(time.time) === dateFilter.rawDate)
+                            .sort((a, b) => new Date(a.time) - new Date(b.time))
                             .map((time) => {
                                 return (
                                     <button
@@ -38,7 +39,7 @@ const ShowTimeTheatreItem = ({
                                                 : ""
                                             }
                                         `}
-                                        onClick={() => handleSelectTime(time.time, item.theater.theaterId)}
+                                        onClick={() => handleSelectTime(time.time, item.theater.theaterId, time.showtimeId)}
                                     >
                                         {formatTime(time.time)}
                                     </button>

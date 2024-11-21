@@ -38,9 +38,10 @@
         .film-card-rating {
             color           : $color-white;
             position        : absolute;
+            width           : 50px;
             background-color: $color-primary;
             padding         : 5px 10px;
-            font-size       : 12px;
+            font-size       : 10px;
             font-weight     : 700;
             border-radius   : 5px;
             right           : 10px;

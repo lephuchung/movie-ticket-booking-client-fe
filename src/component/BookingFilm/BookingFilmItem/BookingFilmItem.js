@@ -1,19 +1,20 @@
 import React from 'react'
-import poster from "./image.png"
+import emptyPoster from "./img-blank.bb695736.svg"
 import "./BookingFilmItem.scss"
 
-const BookingFilmItem = ({ film, setFilm }) => {
-
-    // const film = {
-    //     Title: "Venom: Kèo Cuối",
-    //     Rating: "8.5/10",
-    //     PosterUrl: "https://cdn.galaxycine.vn/media/2024/10/30/the-paradise-of-thorns-1_1730262436681.jpg"
-    // }
+const BookingFilmItem = ({
+    film = {
+        Title: "Không xác định",
+        Rating: "10/10",
+        PosterUrl: emptyPoster
+    },
+    setFilm }) => {
     const handleClickFilmItem = () => {
         setFilm(film)
     }
     return (
         <div className='booking-film-item' onClick={() => handleClickFilmItem()}>
+            <span className='booking-film-rating'>{film.Rating}/10</span>
             <img src={film?.PosterUrl} alt="" className='booking-film-poster' />
             <span className='booking-film-title'>{film.Title}</span>
         </div>

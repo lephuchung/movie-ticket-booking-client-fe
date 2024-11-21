@@ -210,7 +210,7 @@ const BookingSeat = ({
                 }
 
             </div>
-            {openToggleSeat && province && film && showtime.time &&
+            {openToggleSeat && province && film && showtime.showtimeId &&
                 <div className="booking-seat-content">
                     {rows.map((row) => {
                         return (

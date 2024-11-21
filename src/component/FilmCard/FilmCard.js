@@ -1,9 +1,15 @@
 import React from 'react'
-// import poster from "./image.png"
+import emptyPoster from "./img-blank.bb695736.svg"
 import "./FilmCard.scss"
 import { Link } from 'react-router-dom'
 
-const FilmCard = ({ film }) => {
+const FilmCard = ({
+    film = {
+        Title: "Không xác định",
+        Rating: "10/10",
+        PosterUrl: emptyPoster
+    }
+}) => {
 
     // const film = {
     //     title: "Venom: Kèo Cuối",
