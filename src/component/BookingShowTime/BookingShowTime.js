@@ -26,8 +26,6 @@ const BookingShowTime = ({
         const now = new Date();
 
         return showtimes.filter((showtime) => {
-            console.log("ched: ", showtime);
-
             const startTime = new Date(showtime.StartTime);
             return startTime > now;
         });
@@ -61,8 +59,6 @@ const BookingShowTime = ({
     }
 
     const groupedShowtimes = groupShowtimes(getShowtimesAfterNow(showtimes));
-    console.log("checkL : ", groupedShowtimes);
-
 
     return (
         <div className='booking-showtime'>

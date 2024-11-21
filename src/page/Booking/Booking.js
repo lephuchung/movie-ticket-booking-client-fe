@@ -8,16 +8,20 @@ import BookingTicketSummary from '../../component/BookingTicketSummary/BookingTi
 import { fetchProvince } from '../../apis/fetchProvince';
 import { fetchFilmInProvince } from '../../apis/fetchFilmInProvince';
 import { fetchShowtimeOfFilmInProvince } from '../../apis/fetchShowtimeOfFilmInProvince';
+import { convertToISO } from '../../utils/convertToIsoTime';
 
 const Booking = () => {
   const [province, setProvince] = useState("");
   const [provinces, setProvinces] = useState([]);
   const [film, setFilm] = useState("");
   const [films, setFilms] = useState([]);
-  const [showtime, setShowtime] = useState({ time: "", theatreName: "" });
+  const [showtime, setShowtime] = useState({});
   const [showtimes, setShowtimes] = useState([]);
   const [seats, setSeats] = useState([]);
-  const [dateFilter, setDateFilter] = useState(null)
+  const [dateFilter, setDateFilter] = useState(null);
+  const [price, setPrice] = useState(10000);
+  console.log("price: ", price);
+  console.log("showtime: ", showtime);
 
   const [openToggleProvince, setOpenToggleProvince] = useState(true)
   const [openToggleFilm, setOpenToggleFilm] = useState(false)
@@ -37,7 +41,7 @@ const Booking = () => {
         setFilms(filmList);
       }
       if (province && film) {
-        const showtimeList = await fetchShowtimeOfFilmInProvince(film.Title, province);
+        const showtimeList = await fetchShowtimeOfFilmInProvince(film.Title, province, convertToISO(dates[0].rawDate), convertToISO(dates[2].rawDate, true));
         setShowtimes(showtimeList);
       }
 
@@ -74,26 +78,36 @@ const Booking = () => {
     return dates;
   };
 
+  const getPriceByShowtimeId = (showtime, showtimes) => {
+
+    const showtimeSelected = showtimes.find(st => st.ShowtimeId === showtime.showtimeId);
+    console.log("showtimeSelect: ", showtimeSelected);
+
+    return showtimeSelected ? showtimeSelected.Price : null;
+  }
+
+  useEffect(() => {
+    setPrice(getPriceByShowtimeId(showtime, showtimes));
+  }, [showtime])
+
+
   useEffect(() => {
     const generatedDates = generateDates(3);
     setDates(generatedDates);
     setDateFilter(generatedDates[0]);
-  }, [province]);
+  }, []);
 
+  console.log("showtimes: ", showtimes);
 
   useEffect(() => {
     getInfor();
   }, [province, film, showtime]);
 
-  console.log("check: ", showtimes);
-
   const data = {
-    province,
-    film,
-    showtime,
+    showtimeId: showtime,
     seats,
   }
-  // console.log("check data: ", data);
+  console.log("check data: ", data);
 
   return (
     <div className='booking'>
@@ -154,6 +168,7 @@ const Booking = () => {
         <BookingTicketSummary
           film={film}
           showtime={showtime}
+          price={price}
           seats={seats}
         />
       </div>

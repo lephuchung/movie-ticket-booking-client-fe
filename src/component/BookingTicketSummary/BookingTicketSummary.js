@@ -1,16 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import emptyPoster from './img-blank.bb695736.svg'
 import "./BookingTicketSummary.scss"
+import { getDateTimeFromISOTime } from '../../utils/getDateTimeFromIsoTime';
 
 const BookingTicketSummary = ({
     film = {
-        Title: "hehe",
-        Rating: "8.5/10",
-        PosterUrl: "../BookingFilm/BookingFilmItem/image.png"
+        Title: "Không xác định",
+        Rating: "10/10",
+        PosterUrl: emptyPoster
     },
     showtime,
     seats,
-    totalAmount = 0
+    price = 10000,
 }) => {
     return (
         <div className="ticket-summary">
@@ -31,7 +32,7 @@ const BookingTicketSummary = ({
                     {showtime.time &&
                         <div>
                             <p>{showtime?.theatreName} - Room 1</p>
-                            <p>Suất: <strong>{showtime?.time}</strong></p>
+                            <p>Suất: <strong>{getDateTimeFromISOTime(showtime?.time)}</strong></p>
                         </div>
                     }
                 </div>
@@ -42,12 +43,12 @@ const BookingTicketSummary = ({
                     <p>{seats?.length}x Ghế đơn</p>
                     <p>Ghế: {seats.join(", ")}</p>
                 </div>
-                <p className="seat-price">{totalAmount.toLocaleString()} ₫</p>
+                <p className="seat-price">{price.toLocaleString()} ₫</p>
             </div>
             <hr />
             <div className="total">
                 <span>Tổng cộng</span>
-                <span className="total-amount">{totalAmount.toLocaleString()} ₫</span>
+                <span className="total-amount">{(seats.length * price).toLocaleString()} ₫</span>
             </div>
             {seats.length !== 0 &&
                 <div className="actions">
