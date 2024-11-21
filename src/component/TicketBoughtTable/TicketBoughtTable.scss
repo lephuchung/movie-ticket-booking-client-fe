@@ -8,6 +8,8 @@
     width          : 100%;
     border-collapse: collapse;
     overflow       : auto;
+    display        : flex;
+    justify-content: center;
 
     .ticket-table {
         width     : 800px;

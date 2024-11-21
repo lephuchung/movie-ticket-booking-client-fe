@@ -54,8 +54,6 @@ const Home = () => {
     getMovies();
   }, []);
 
-  console.log("check: ", movies);
-
   return (
     <div className='home'>
       <Carousel images={movie} />

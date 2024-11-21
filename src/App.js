@@ -17,16 +17,18 @@ function App() {
       <div className="App">
         <header className="App-header">
           <Navbar />
-          <Routes>
-            <Route path='/film/' element={<Film />} />
-            <Route path='/film/:id' element={<FilmDetail />} />
-            <Route path='/category/:categoryName' element={<CategoryDetail />} />
-            <Route path='/category' element={<Category />} />
-            <Route path='/booking' element={<Booking />} />
-            <Route path='/profile' element={<Profile />} />
-            <Route path='/' element={<Home />} />
-            <Route path='*' element={<NotFound />} />
-          </Routes>
+          <div className='main-container'>
+            <Routes>
+              <Route path='/film/' element={<Film />} />
+              <Route path='/film/:id' element={<FilmDetail />} />
+              <Route path='/category/:categoryName' element={<CategoryDetail />} />
+              <Route path='/category' element={<Category />} />
+              <Route path='/booking' element={<Booking />} />
+              <Route path='/profile' element={<Profile />} />
+              <Route path='/' element={<Home />} />
+              <Route path='*' element={<NotFound />} />
+            </Routes>
+          </div>
           <Footer />
         </header>
       </div>
