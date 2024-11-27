@@ -2,6 +2,7 @@ import React from 'react';
 import './MovieList.scss';
 import FilmCard from '../FilmCard/FilmCard';
 import { Link } from 'react-router-dom';
+import { getGenreTranslation } from '../../language/translateCategory';
 
 const MovieList = ({ genre, movies, all = false }) => {
   const displayedMovies = all ? movies : movies.slice(0, 4);
@@ -9,7 +10,7 @@ const MovieList = ({ genre, movies, all = false }) => {
     <div className="movie-list">
       {genre &&
         <div className='movie-list-title-area'>
-          <h2 className='movie-list-title'>{genre}</h2>
+          <h2 className='movie-list-title'>{getGenreTranslation(genre)}</h2>
           {!all &&
             <Link to={`/category/${genre}`} >
               <button className='movie-list-title-button'>Tất cả</button>
