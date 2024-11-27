@@ -1,0 +1,95 @@
+@import "../../styles/color.scss";
+
+.auth-container {
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    min-height     : 100vh;
+    background     : $color-background;
+    font-family    : "Arial", sans-serif;
+    margin-top     : 20px;
+
+    .form-wrapper {
+        display      : flex;
+        background   : #fff;
+        border-radius: 10px;
+        box-shadow   : 0 4px 20px rgba(0, 0, 0, 0.2);
+        width        : 600px;
+        max-width    : 90%;
+        overflow     : hidden;
+
+        .form {
+            flex           : 1;
+            padding        : 25px 25px;
+            display        : none;
+            flex-direction : column;
+            justify-content: center;
+            text-align     : center;
+            transition     : all 0.3s ease-in-out;
+
+            &.active {
+                display: flex;
+            }
+
+            h2 {
+                font-size    : 1.8rem;
+                font-weight  : 700;
+                color        : #333;
+                margin-bottom: 1.5rem;
+            }
+
+            .input-field {
+                width        : 100%;
+                padding      : 0.8rem;
+                margin       : 0.5rem 0;
+                border       : 1px solid #ccc;
+                border-radius: 5px;
+                font-size    : 1rem;
+
+                &:focus {
+                    outline     : none;
+                    border-color: $color-primary;
+                }
+            }
+
+            .btn {
+                background-color: $color-primary;
+                color           : #fff;
+                border          : none;
+                padding         : 0.8rem;
+                border-radius   : 5px;
+                font-size       : 1rem;
+                cursor          : pointer;
+                margin-top      : 1rem;
+
+                &:hover {
+                    background-color: darken($color-primary, 10%);
+                }
+            }
+
+            p {
+                margin-top: 1rem;
+                font-size : 0.9rem;
+
+                .toggle-link {
+                    color          : $color-primary;
+                    cursor         : pointer;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    // Hiệu ứng chuyển đổi giữa đăng nhập và đăng ký
+    .login-active {
+        .login-form {
+            display: flex;
+        }
+    }
+
+    .register-active {
+        .register-form {
+            display: flex;
+        }
+    }
+}

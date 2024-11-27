@@ -12,7 +12,17 @@ const BookingTicketSummary = ({
     showtime,
     seats,
     price = 10000,
+    setProvince,
+    setFilm,
+    setShowtime,
+    setSeats,
 }) => {
+    const handleOnclickBackButton = () => {
+        setProvince("");
+        setFilm("");
+        setShowtime({});
+        setSeats([]);
+    }
     return (
         <div className="ticket-summary">
             {film.Title &&
@@ -43,7 +53,9 @@ const BookingTicketSummary = ({
                     <p>{seats?.length}x Ghế đơn</p>
                     <p>Ghế: {seats.join(", ")}</p>
                 </div>
-                <p className="seat-price">{price.toLocaleString()} ₫</p>
+                {
+                    price && <p className="seat-price">{price.toLocaleString()} ₫</p>
+                }
             </div>
             <hr />
             <div className="total">
@@ -52,7 +64,7 @@ const BookingTicketSummary = ({
             </div>
             {seats.length !== 0 &&
                 <div className="actions">
-                    <button className="back-button">Quay lại</button>
+                    <button className="back-button" onClick={() => { handleOnclickBackButton() }}>Quay lại</button>
                     <button className="continue-button">Tiếp tục</button>
                 </div>
             }

@@ -4,6 +4,7 @@ import FilmCard from '../FilmCard/FilmCard';
 import { Link } from 'react-router-dom';
 
 const MovieList = ({ genre, movies, all = false }) => {
+  const displayedMovies = all ? movies : movies.slice(0, 4);
   return (
     <div className="movie-list">
       {genre &&
@@ -17,7 +18,7 @@ const MovieList = ({ genre, movies, all = false }) => {
         </div>
       }
       <div className='movie-list-content'>
-        {movies.map((movie, index) => (
+        {displayedMovies.map((movie, index) => (
           <FilmCard key={index} film={movie} />
         ))}
       </div>

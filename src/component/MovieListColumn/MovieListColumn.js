@@ -1,18 +1,34 @@
 import React from 'react';
 import './MovieListColumn.scss';
 import FilmCardSmall from '../FilmCardSmall/FilmCardSmall';
+import { Link, useNavigate } from 'react-router-dom';
 
-const MovieListColumn = ({ genre, movies }) => {
+const MovieListColumn = ({ genre, movies, all = false }) => {
+    const navigate = useNavigate()
+    const handleOnclickAll = () => {
+        navigate(`/category/${genre}`)
+    }
+
+    const displayedMovies = all ? movies : movies.slice(0, 4);
+
     return (
         <div className="movie-list-column">
             {genre &&
                 <h2 className='movie-list-column-title'>{genre}</h2>
             }
             <div className='movie-list-column-content'>
-                {movies.map((movie, index) => (
+                {displayedMovies.map((movie, index) => (
                     <FilmCardSmall key={index} film={movie} />
                 ))}
             </div>
+            {
+                !all &&
+                <button className='movie-list-column-button' onClick={() => { handleOnclickAll() }}>
+                    <span>
+                        Tất cả
+                    </span>
+                </button>
+            }
         </div>
     );
 }
