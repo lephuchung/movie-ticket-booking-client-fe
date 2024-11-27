@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./Login.scss";
 import { useNavigate } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
+import { SiFacebook } from "react-icons/si";
 
 const Login = ({ isAuth, setIsAuth }) => {
     const navigate = useNavigate();
@@ -86,6 +88,17 @@ const Login = ({ isAuth, setIsAuth }) => {
                             Đăng ký
                         </span>
                     </p>
+                    <div>
+                        <p>Hoặc đăng nhập với</p>
+                        <div className="login-form-authen-area">
+                            <button className="login-form-authen-button">
+                                <FcGoogle className="icon gmail" />
+                            </button>
+                            <button className="login-form-authen-button">
+                                <SiFacebook className="icon facebook" />
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
                 <div className={`form register-form ${!isLogin ? "active" : ""}`}>
