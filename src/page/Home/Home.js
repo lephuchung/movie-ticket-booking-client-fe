@@ -59,7 +59,7 @@ const Home = () => {
       <Carousel images={movie} />
       <div className='home-film-list-area'>
         {movies
-          ? <MovieListComponent genre={"đang chiếu"} movies={movies} />
+          ? <MovieListComponent genre={"đang chiếu"} movies={movies} all={true} />
           : <div></div>
 
         }

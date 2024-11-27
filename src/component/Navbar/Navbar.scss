@@ -16,9 +16,17 @@
   .left-links {
     display: flex;
 
-    .topnav-logo {
-      width : 40px;
-      height: 40px;
+    .topnav-logo-button {
+      width          : 42px;
+      height         : 42px;
+      display        : flex;
+      justify-content: center;
+      align-items    : center;
+
+      .topnav-logo {
+        width : 40px;
+        height: 40px;
+      }
     }
 
     a {
@@ -107,7 +115,6 @@
     }
   }
 
-  /* Overlay */
   .overlay {
     position        : fixed;
     top             : 60px;

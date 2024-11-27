@@ -10,21 +10,25 @@ import Booking from './page/Booking/Booking';
 import NotFound from './page/NotFound/NotFound';
 import Profile from './page/Profile/Profile';
 import Footer from './component/Footer/Footer';
+import Login from './page/Login/Login';
+import { useState } from 'react';
 
 function App() {
+  const [isAuth, setIsAuth] = useState(false);
   return (
     <BrowserRouter>
       <div className="App">
         <header className="App-header">
-          <Navbar />
+          <Navbar isAuth={isAuth} />
           <div className='main-container'>
             <Routes>
               <Route path='/film/' element={<Film />} />
-              <Route path='/film/:id' element={<FilmDetail />} />
+              <Route path='/film/:title' element={<FilmDetail isAuth={isAuth} />} />
               <Route path='/category/:categoryName' element={<CategoryDetail />} />
               <Route path='/category' element={<Category />} />
-              <Route path='/booking' element={<Booking />} />
+              <Route path='/booking' element={<Booking isAuth={isAuth} />} />
               <Route path='/profile' element={<Profile />} />
+              <Route path='/login' element={<Login isAuth={isAuth} setIsAuth={setIsAuth} />} />
               <Route path='/' element={<Home />} />
               <Route path='*' element={<NotFound />} />
             </Routes>

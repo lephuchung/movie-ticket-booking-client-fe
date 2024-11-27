@@ -9,8 +9,10 @@ import { fetchProvince } from '../../apis/fetchProvince';
 import { fetchFilmInProvince } from '../../apis/fetchFilmInProvince';
 import { fetchShowtimeOfFilmInProvince } from '../../apis/fetchShowtimeOfFilmInProvince';
 import { convertToISO } from '../../utils/convertToIsoTime';
+import { useNavigate } from 'react-router-dom';
 
-const Booking = () => {
+const Booking = ({ isAuth }) => {
+  const navigate = useNavigate()
   const [province, setProvince] = useState("");
   const [provinces, setProvinces] = useState([]);
   const [film, setFilm] = useState("");
@@ -103,6 +105,10 @@ const Booking = () => {
     getInfor();
   }, [province, film, showtime]);
 
+  useEffect(() => {
+    if (!isAuth) navigate("/login")
+  }, [isAuth])
+
   const data = {
     showtimeId: showtime,
     seats,
@@ -168,6 +174,10 @@ const Booking = () => {
         <BookingTicketSummary
           film={film}
           showtime={showtime}
+          setProvince={setProvince}
+          setFilm={setFilm}
+          setShowtime={setShowtime}
+          setSeats={setSeats}
           price={price}
           seats={seats}
         />
