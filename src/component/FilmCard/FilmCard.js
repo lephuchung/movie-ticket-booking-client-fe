@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const FilmCard = ({
     film = {
         Title: "Không xác định",
-        Rating: "10/10",
+        Rating: 10,
         PosterUrl: emptyPoster
     }
 }) => {
@@ -14,7 +14,7 @@ const FilmCard = ({
         <Link to={`/film/${film.Title}`} className='film-card-link'>
             <div className='film-card'>
                 <span className='film-card-rating'>{film.Rating}/10</span>
-                <img src={film?.PosterUrl} alt="" className='film-card-poster' />
+                <img src={film?.PosterUrl ? film?.PosterUrl : emptyPoster} alt="" className='film-card-poster' />
                 <span className='film-card-title'>{film.Title}</span>
             </div>
         </Link>

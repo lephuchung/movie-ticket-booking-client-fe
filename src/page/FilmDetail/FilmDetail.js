@@ -6,9 +6,6 @@ import { FaRegClock } from "react-icons/fa6";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa";
 import { AiFillPlayCircle } from "react-icons/ai";
-import {
-  movies,
-} from '../Data';
 import MovieListColumn from '../../component/MovieListColumn/MovieListColumn';
 import { useNavigate, useParams } from 'react-router';
 import { fetchFilmDetail } from '../../apis/fetchFilmDetail';
@@ -83,7 +80,7 @@ const FilmDetail = () => {
   return (
     <div className='film-detail-container'>
       <div className="film-detail-thumbnail" onClick={openPopup}>
-        <img src={film.PosterUrl} alt="Video Thumbnail" />
+        <img src={film.PosterUrl ? film.PosterUrl : emptyPoster} alt="Video Thumbnail" />
         <div className="film-detail-thumbnail-play-button"><AiFillPlayCircle /></div>
       </div>
       {isOpen && (
@@ -102,7 +99,7 @@ const FilmDetail = () => {
         <div className='film-detail-main-content'>
           <div className='film-detail-general-information'>
             <div className='film-detail-poster'>
-              <img src={film.PosterUrl} alt="Poster" />
+              <img src={film.PosterUrl ? film.PosterUrl : emptyPoster} alt="Poster" />
             </div>
             <div className='film-detail-information'>
               <h1 className='film-detail-title'>{film.Title}</h1>
@@ -129,7 +126,7 @@ const FilmDetail = () => {
           <div className='film-description'>
             <h2 className='film-description-title'>Nội dung phim</h2>
             <div className='film-description-content'>
-              {film.Description}
+              {film.Description ? film.Description : "Nội dung phim đang cập nhật"}
             </div>
           </div>
           <button className='film-detail-booking-button' onClick={() => { handleOnclickBooking() }}>

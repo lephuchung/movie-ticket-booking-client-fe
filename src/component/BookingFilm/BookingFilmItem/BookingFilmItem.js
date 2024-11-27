@@ -5,7 +5,7 @@ import "./BookingFilmItem.scss"
 const BookingFilmItem = ({
     film = {
         Title: "Không xác định",
-        Rating: "10/10",
+        Rating: 10,
         PosterUrl: emptyPoster
     },
     setFilm }) => {
@@ -15,7 +15,7 @@ const BookingFilmItem = ({
     return (
         <div className='booking-film-item' onClick={() => handleClickFilmItem()}>
             <span className='booking-film-rating'>{film.Rating}/10</span>
-            <img src={film?.PosterUrl} alt="" className='booking-film-poster' />
+            <img src={film?.PosterUrl ? film?.PosterUrl : emptyPoster} alt="" className='booking-film-poster' />
             <span className='booking-film-title'>{film.Title}</span>
         </div>
 

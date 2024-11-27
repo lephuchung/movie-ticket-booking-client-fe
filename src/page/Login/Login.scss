@@ -84,6 +84,42 @@
     .login-active {
         .login-form {
             display: flex;
+
+            .login-form-authen-area {
+                display        : flex;
+                justify-content: center;
+                align-items    : center;
+
+                .login-form-authen-button {
+                    margin         : 0 10px;
+                    height         : 40px;
+                    display        : flex;
+                    justify-content: center;
+                    align-items    : center;
+                    border-radius  : 15px;
+                    border         : 1px solid $color-gray;
+                    transition     : transform 0.7 ease;
+
+                    &:hover {
+                        .icon {
+                            transform: scale(1.1);
+                        }
+
+                        .facebook {
+                            color: #0866FF;
+                        }
+                    }
+
+                    .icon {
+                        font-size  : 25px;
+                        line-height: 25px;
+                    }
+
+                    .facebook {
+                        color: #0866FF;
+                    }
+                }
+            }
         }
     }
 
