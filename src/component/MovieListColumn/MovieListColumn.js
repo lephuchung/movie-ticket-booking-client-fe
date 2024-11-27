@@ -2,6 +2,7 @@ import React from 'react';
 import './MovieListColumn.scss';
 import FilmCardSmall from '../FilmCardSmall/FilmCardSmall';
 import { Link, useNavigate } from 'react-router-dom';
+import { getGenreTranslation } from '../../language/translateCategory';
 
 const MovieListColumn = ({ genre, movies, all = false }) => {
     const navigate = useNavigate()
@@ -14,7 +15,7 @@ const MovieListColumn = ({ genre, movies, all = false }) => {
     return (
         <div className="movie-list-column">
             {genre &&
-                <h2 className='movie-list-column-title'>{genre}</h2>
+                <h2 className='movie-list-column-title'>{getGenreTranslation(genre)}</h2>
             }
             <div className='movie-list-column-content'>
                 {displayedMovies.map((movie, index) => (

@@ -204,7 +204,8 @@
     }
 
     .film-detail-now-play-list {
-      min-width: 320px;
+      min-width: 300px;
+      max-width: 320px;
 
       @media (max-width: 1200px) {
         display: none;

@@ -1,21 +1,30 @@
 import React, { useEffect, useState } from 'react'
 import "./CategoryCard.scss"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { getRandomGradient } from '../../utils/getRandomGradient';
+import { getGenreTranslation } from '../../language/translateCategory';
 
 const CategoryCard = ({ category }) => {
+    const navigate = useNavigate();
     const [bgColor, setBgColor] = useState('');
     console.log("bgColor", bgColor);
+
+    const handleOnclickCategoryDetail = () => {
+        navigate(`/category/${category.Genre}`)
+    }
 
     useEffect(() => {
         setBgColor(getRandomGradient());
     }, []);
+
     return (
-        <Link to={`/category/${category.name}`} className='category-card-link'>
-            <div className='category-card' style={{ background: bgColor }}>
-                {category.name}
-            </div>
-        </Link>
+        <div
+            className='category-card'
+            style={{ background: bgColor }}
+            onClick={() => { handleOnclickCategoryDetail() }}
+        >
+            {getGenreTranslation(category.Genre)}
+        </div>
     )
 }
 

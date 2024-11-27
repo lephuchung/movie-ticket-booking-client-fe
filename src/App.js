@@ -24,7 +24,7 @@ function App() {
             <Routes>
               <Route path='/film/' element={<Film />} />
               <Route path='/film/:title' element={<FilmDetail isAuth={isAuth} />} />
-              <Route path='/category/:categoryName' element={<CategoryDetail />} />
+              <Route path='/category/:genre' element={<CategoryDetail />} />
               <Route path='/category' element={<Category />} />
               <Route path='/booking' element={<Booking isAuth={isAuth} />} />
               <Route path='/profile' element={<Profile />} />

@@ -14,6 +14,7 @@ import { useNavigate, useParams } from 'react-router';
 import { fetchFilmDetail } from '../../apis/fetchFilmDetail';
 import { getDateFromISOTime } from '../../utils/getDateFromIsoTIme';
 import { fetchNowShowingMovies } from '../../apis/fetchNowShowing';
+import { getGenreTranslation } from '../../language/translateCategory';
 
 const FilmDetail = () => {
   const navigate = useNavigate()
@@ -121,7 +122,7 @@ const FilmDetail = () => {
               </div>
               <p>Tình trạng: Phim đang chiếu</p>
               <p>Nhà sản xuất: Đang cập nhật</p>
-              <p>Thể loại: {film.Genre}</p>
+              <p>Thể loại: {getGenreTranslation(film.Genre)}</p>
               <p>Đạo diễn: {film.Director}</p>
             </div>
           </div>

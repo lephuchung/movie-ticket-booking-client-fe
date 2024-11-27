@@ -35,13 +35,13 @@ const Home = () => {
       setMoviesAction(actionMovies);
       const animationMovies = await fetchMoviesByGenre("Animation")
       setMoviesAnimation(animationMovies);
-      const scifiMovies = await fetchMoviesByGenre("Sci-fi")
+      const scifiMovies = await fetchMoviesByGenre("Sci-Fi")
       setMoviesScifi(scifiMovies);
       const thrillerMovies = await fetchMoviesByGenre("Thriller")
       setMoviesThriller(thrillerMovies);
       const horrorMovies = await fetchMoviesByGenre("Horror")
       setMoviesHorror(horrorMovies);
-      const romanceMovies = await fetchMoviesByGenre("Romance")
+      const romanceMovies = await fetchMoviesByGenre("Romantic")
       setMoviesRomance(romanceMovies);
     } catch (err) {
       setError(err.message);
@@ -59,33 +59,33 @@ const Home = () => {
       <Carousel images={movie} />
       <div className='home-film-list-area'>
         {movies
-          ? <MovieListComponent genre={"đang chiếu"} movies={movies} all={true} />
+          ? <MovieListComponent genre={"Now showing"} movies={movies} all={true} />
           : <div></div>
 
         }
         {moviesAnimation.length
-          ? <MovieListComponent genre={"hoạt hình"} movies={moviesAnimation} />
+          ? <MovieListComponent genre={"Animation"} movies={moviesAnimation} />
           : <div></div>
 
         }
         {moviesAction.length
-          ? <MovieListComponent genre={"hành động"} movies={moviesAction} />
+          ? <MovieListComponent genre={"Action"} movies={moviesAction} />
           : <div></div>
         }
         {moviesScifi.length
-          ? <MovieListComponent genre={"viễn tưởng"} movies={moviesScifi} />
+          ? <MovieListComponent genre={"Sci-Fi"} movies={moviesScifi} />
           : <div></div>
         }
         {moviesThriller.length
-          ? <MovieListComponent genre={"tâm lý"} movies={moviesThriller} />
+          ? <MovieListComponent genre={"Thriller"} movies={moviesThriller} />
           : <div></div>
         }
         {moviesHorror.length
-          ? <MovieListComponent genre={"kinh dị"} movies={moviesHorror} />
+          ? <MovieListComponent genre={"Horror"} movies={moviesHorror} />
           : <div></div>
         }
         {moviesRomance.length
-          ? <MovieListComponent genre={"lãng mạn"} movies={moviesRomance} />
+          ? <MovieListComponent genre={"Romantic"} movies={moviesRomance} />
           : <div></div>
         }
       </div>
