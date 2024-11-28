@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import "./Film.scss"
 import MovieList from '../../component/MovieList/MovieList'
 import { fetchNowShowingMovies } from '../../apis/fetchNowShowing'
+import SearchBar from '../../component/SearchBar/SearchBar'
 
 const Film = () => {
   const [movies, setMovies] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -22,9 +24,26 @@ const Film = () => {
   useEffect(() => {
     getMovies();
   }, []);
+
+  const filteredMovies = movies.filter((movie) =>
+    movie.Title.toLowerCase().includes(searchInput.toLowerCase())
+  );
+
   return (
     <div className='film-page-container'>
-      <MovieList genre={"Danh sách phim"} movies={movies} all={true} />
+      <SearchBar onSearch={setSearchInput} />
+      <div className='film-page-main-content'>
+        {loading ? (
+          <div>Đang tải...</div>
+        ) : error ? (
+          <div>Lỗi: {error}</div>
+        ) : filteredMovies.length > 0 ? (
+          <MovieList genre="Danh sách phim" movies={filteredMovies} all={true} />
+        ) : (
+          <div>Không tìm thấy phim nào phù hợp.</div>
+        )}
+      </div>
+
     </div>
   )
 }
