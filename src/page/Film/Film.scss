@@ -10,7 +10,12 @@
     justify-content: center;
     align-items    : center;
     flex-direction : column;
-    padding        : 30px;
+    padding-top    : 30px;
     margin-top     : 50px;
+
+    .film-page-main-content {
+        width  : 1080px;
+        padding: 20px;
+    }
 
 }

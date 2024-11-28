@@ -1,0 +1,51 @@
+@import '../../styles/color.scss';
+
+.search-bar {
+    display         : flex;
+    align-items     : center;
+    width           : 100%;
+    max-width       : 800px;
+    border          : 2px solid #ccc;
+    background-color: $color-white;
+    border-radius   : 999px;
+    overflow        : hidden;
+    box-shadow      : 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    .search-input {
+        flex            : 1;
+        padding         : 10px 12px;
+        border          : none;
+        outline         : none;
+        font-size       : 16px;
+        color           : #333;
+        background-color: $color-white;
+        padding-left    : 20px;
+
+        &::placeholder {
+            color: #aaa;
+        }
+    }
+
+    .search-button {
+        background-color: $color-primary;
+        color           : #fff;
+        border          : none;
+        cursor          : pointer;
+        width           : 35px;
+        height          : 35px;
+        display         : flex;
+        justify-content : center;
+        align-items     : center;
+        border-radius   : 999px;
+        margin          : 5px;
+
+        .icon {
+            font-size: 16px;
+        }
+
+        &:hover {
+            background-color: $color-button-hover;
+            color           : $color-text
+        }
+    }
+}

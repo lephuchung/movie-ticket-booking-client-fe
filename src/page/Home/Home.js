@@ -69,7 +69,7 @@ const Home = () => {
       <Carousel images={movie} />
       <div className='home-film-list-area'>
         {movies.length > 0 && (
-          <MovieListComponent genre={"Now Showing"} movies={movies} all={true} />
+          <MovieListComponent genre={"Now showing"} movies={movies} all={true} />
         )}
         {genres.map(({ key, label }) => (
           genreMovies[key]?.length > 0 && (

@@ -115,7 +115,7 @@ const FilmDetail = () => {
               </div>
               <div className="film-detail-rating">
                 <FaRegStar className='film-detail-rating-icon' />
-                <span>9.4</span>
+                <span>{film.Rating}</span>
               </div>
               <p>Tình trạng: Phim đang chiếu</p>
               <p>Nhà sản xuất: Đang cập nhật</p>
