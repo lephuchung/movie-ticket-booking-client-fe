@@ -17,6 +17,7 @@ $box-shadow : 0px 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     .profile-info {
+        position           : relative;
         width              : 25%;
         // min-width       : 280px;
         text-align         : center;
@@ -46,7 +47,8 @@ $box-shadow : 0px 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .profile-info-header {
-            width: 100%;
+            width     : 100%;
+            margin-top: 20px;
 
             .profile-info-avatar {
                 width        : 100px;
@@ -83,8 +85,12 @@ $box-shadow : 0px 4px 12px rgba(0, 0, 0, 0.1);
             }
         }
 
+
+
         .profile-change-button {
-            height          : 32px;
+            position        : absolute;
+            top             : 10px;
+            right           : 10px;
             margin          : auto;
             border          : none;
             border-radius   : 999px;
@@ -112,6 +118,33 @@ $box-shadow : 0px 4px 12px rgba(0, 0, 0, 0.1);
                 padding    : 5px 20px;
                 font-size  : 14px;
                 font-weight: 600;
+            }
+        }
+
+        .profile-signout {
+            margin          : auto;
+            padding         : 20px;
+            border          : none;
+            border-radius   : 999px;
+            font-size       : 16px;
+            font-weight     : 600;
+            background-color: $color-button-hover;
+            color           : $color-text;
+            display         : flex;
+            justify-content : center;
+            align-items     : center;
+            width           : 120px;
+            height          : 32px;
+            transition      : background-color 0.5s ease;
+
+            &:hover {
+                color           : $color-white;
+                background-color: $color-gray;
+            }
+
+            &:active {
+                color           : $color-white;
+                background-color: $color-button-active;
             }
         }
     }

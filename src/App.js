@@ -11,13 +11,15 @@ import NotFound from './page/NotFound/NotFound';
 import Profile from './page/Profile/Profile';
 import Footer from './component/Footer/Footer';
 import Login from './page/Login/Login';
+import { useState } from 'react';
 
 function App() {
+  const [isSignedIn, setIsSignedIn] = useState(!!localStorage.getItem("token"));
   return (
     <BrowserRouter>
       <div className="App">
         <header className="App-header">
-          <Navbar />
+          <Navbar isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} />
           <div className='main-container'>
             <Routes>
               <Route path='/film/' element={<Film />} />
@@ -26,7 +28,7 @@ function App() {
               <Route path='/category' element={<Category />} />
               <Route path='/booking' element={<Booking />} />
               <Route path='/profile' element={<Profile />} />
-              <Route path='/login' element={<Login />} />
+              <Route path='/login' element={<Login setIsSignedIn={setIsSignedIn} />} />
               <Route path='/' element={<Home />} />
               <Route path='*' element={<NotFound />} />
             </Routes>

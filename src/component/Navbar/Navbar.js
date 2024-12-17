@@ -4,11 +4,12 @@ import './Navbar.scss';
 import useMediaQuery from '../../customHook/useMediaQuery';
 import { IoMenu } from "react-icons/io5";
 import { IoIosClose } from "react-icons/io";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const Navbar = ({ }) => {
+const Navbar = ({ isSignedIn, setIsSignedIn }) => {
     const isMobile = useMediaQuery('(max-width: 570px)');
     const [menuOpen, setMenuOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
@@ -49,7 +50,7 @@ const Navbar = ({ }) => {
                 <NavLink to="/category" activeClassName="active" onClick={handleMenuClose}>
                     Thể loại
                 </NavLink>
-                {localStorage.token
+                {isSignedIn
                     ? <NavLink to="/profile" activeClassName="active" onClick={handleMenuClose}>
                         Cá nhân
                     </NavLink>
