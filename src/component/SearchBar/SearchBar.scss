@@ -3,8 +3,8 @@
 .search-bar {
     display         : flex;
     align-items     : center;
-    width           : 100%;
-    max-width       : 800px;
+    width           : 80%;
+    max-width       : 700px;
     border          : 2px solid #ccc;
     background-color: $color-white;
     border-radius   : 999px;
@@ -26,11 +26,9 @@
         }
     }
 
-    .search-button {
-        background-color: $color-primary;
-        color           : #fff;
+    .search-icon-area {
+        background-color: $color-white;
         border          : none;
-        cursor          : pointer;
         width           : 35px;
         height          : 35px;
         display         : flex;
@@ -41,11 +39,8 @@
 
         .icon {
             font-size: 16px;
-        }
+            color    : $color-gray;
 
-        &:hover {
-            background-color: $color-button-hover;
-            color           : $color-text
         }
     }
 }
