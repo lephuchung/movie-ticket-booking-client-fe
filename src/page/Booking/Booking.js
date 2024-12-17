@@ -11,7 +11,7 @@ import { fetchShowtimeOfFilmInProvince } from '../../apis/fetchShowtimeOfFilmInP
 import { convertToISO } from '../../utils/convertToIsoTime';
 import { useNavigate } from 'react-router-dom';
 
-const Booking = ({ isAuth }) => {
+const Booking = ({ }) => {
   const navigate = useNavigate()
   const [province, setProvince] = useState("");
   const [provinces, setProvinces] = useState([]);
@@ -22,8 +22,6 @@ const Booking = ({ isAuth }) => {
   const [seats, setSeats] = useState([]);
   const [dateFilter, setDateFilter] = useState(null);
   const [price, setPrice] = useState(10000);
-  console.log("price: ", price);
-  console.log("showtime: ", showtime);
 
   const [openToggleProvince, setOpenToggleProvince] = useState(true)
   const [openToggleFilm, setOpenToggleFilm] = useState(false)
@@ -106,8 +104,8 @@ const Booking = ({ isAuth }) => {
   }, [province, film, showtime]);
 
   useEffect(() => {
-    if (!isAuth) navigate("/login")
-  }, [isAuth])
+    if (!localStorage.token) navigate("/login")
+  }, [localStorage.token])
 
   const data = {
     showtimeId: showtime,

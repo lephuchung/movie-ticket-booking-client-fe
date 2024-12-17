@@ -17,9 +17,9 @@ const SearchBar = ({ placeholder, onSearch }) => {
                 placeholder={placeholder || "Nhập tên phim..."}
                 onChange={handleInputChange}
             />
-            <button className="search-button">
+            <div className="search-icon-area">
                 <IoSearch className='icon' />
-            </button>
+            </div>
         </div>
     );
 };

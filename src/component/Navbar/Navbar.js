@@ -6,7 +6,7 @@ import { IoMenu } from "react-icons/io5";
 import { IoIosClose } from "react-icons/io";
 import { useState } from 'react';
 
-const Navbar = ({ isAuth }) => {
+const Navbar = ({ }) => {
     const isMobile = useMediaQuery('(max-width: 570px)');
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -49,7 +49,7 @@ const Navbar = ({ isAuth }) => {
                 <NavLink to="/category" activeClassName="active" onClick={handleMenuClose}>
                     Thể loại
                 </NavLink>
-                {isAuth
+                {localStorage.token
                     ? <NavLink to="/profile" activeClassName="active" onClick={handleMenuClose}>
                         Cá nhân
                     </NavLink>

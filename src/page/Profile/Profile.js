@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./Profile.scss"
 import avatarPlaceHolder from "./image.png"
 import { MdModeEdit } from "react-icons/md"
@@ -6,8 +6,14 @@ import {
     tickets
 } from '../Data';
 import TicketBoughtTable from '../../component/TicketBoughtTable/TicketBoughtTable';
+import { useNavigate } from 'react-router';
 
 const Profile = () => {
+    const navigate = useNavigate()
+    useEffect(() => {
+        if (!localStorage.token) navigate("/login")
+    }, [localStorage.token])
+
     return (
         <div class="profile-container">
             <div class="profile-info">

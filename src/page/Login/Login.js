@@ -1,87 +1,103 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import "./Login.scss";
 import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
+import { signIn } from "../../apis/auth";
 
-const Login = ({ isAuth, setIsAuth }) => {
+const Login = ({ }) => {
     const navigate = useNavigate();
     const [isLogin, setIsLogin] = useState(true);
-    const [loginEmail, setLoginEmail] = useState("");
-    const [loginPassword, setLoginPassword] = useState("");
-    const [registerEmail, setRegisterEmail] = useState("");
-    const [registerPhoneNumber, setRegisterPhoneNumber] = useState("");
-    const [registerName, setRegisterName] = useState("");
-    const [registerPassword, setRegisterPassword] = useState("");
-    const [registerRePassword, setRegisterRePassword] = useState("");
+    const [formData, setFormData] = useState({
+        loginEmail: "",
+        loginPassword: "",
+        registerEmail: "",
+        registerPhoneNumber: "",
+        registerName: "",
+        registerPassword: "",
+        registerRePassword: "",
+    });
 
-    const handleOnChangeLoginEmail = (e) => {
-        setLoginEmail(e.target.value)
-    }
+    // Hàm chung xử lý thay đổi input
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
 
-    const handleOnChangeLoginPassword = (e) => {
-        setLoginPassword(e.target.value)
-    }
+    // Xóa toàn bộ form
+    const clearForm = useCallback(() => {
+        setFormData({
+            loginEmail: "",
+            loginPassword: "",
+            registerEmail: "",
+            registerPhoneNumber: "",
+            registerName: "",
+            registerPassword: "",
+            registerRePassword: "",
+        });
+    }, []);
 
-    const handleOnChangeRegisterEmail = (e) => {
-        setRegisterEmail(e.target.value)
-    }
-
-    const handleOnChangeRegisterPhoneNumber = (e) => {
-        setRegisterPhoneNumber(e.target.value)
-    }
-
-    const handleOnChangeRegisterName = (e) => {
-        setRegisterName(e.target.value)
-    }
-
-    const handleOnChangeRegisterPassword = (e) => {
-        setRegisterPassword(e.target.value)
-    }
-
-    const handleOnChangeRegisterRePassword = (e) => {
-        setRegisterRePassword(e.target.value)
-    }
-
-    const clearForm = () => {
-        setLoginEmail("");
-        setLoginPassword("");
-        setRegisterEmail("");
-        setRegisterPhoneNumber("");
-        setRegisterName("");
-        setRegisterPassword("");
-        setRegisterRePassword("");
-    }
     const toggleForm = () => {
         clearForm();
         setIsLogin((prev) => !prev);
     };
 
-    useEffect(() => {
-        if (isAuth) navigate("/");
-    }, [isAuth])
+    const handleLogin = async () => {
+        try {
+            if (!formData.loginEmail.trim() || !formData.loginPassword.trim()) {
+                alert("Vui lòng nhập đầy đủ email và mật khẩu!");
+                return;
+            }
 
+            const response = await signIn({
+                email: formData.loginEmail,
+                password: formData.loginPassword,
+            });
+
+            if (response.success) {
+                navigate("/");
+            } else {
+                alert(response.error || "Đăng nhập thất bại! Vui lòng thử lại.");
+                console.log(response);
+
+            }
+        } catch (error) {
+            console.error("Lỗi khi đăng nhập:", error);
+            alert("Đã có lỗi xảy ra. Vui lòng thử lại sau!");
+        } finally {
+            clearForm();
+        }
+    };
+
+    // useEffect(() => {
+    //     if (isAuth) navigate("/");
+    // }, [isAuth, navigate]);
 
     return (
         <div className="auth-container">
             <div className={`form-wrapper ${isLogin ? "login-active" : "register-active"}`}>
+                {/* Login Form */}
                 <div className={`form login-form ${isLogin ? "active" : ""}`}>
                     <h2>Đăng Nhập</h2>
                     <input
                         type="email"
+                        name="loginEmail"
                         placeholder="Email"
                         className="input-field"
-                        value={loginEmail}
-                        onChange={(event) => { handleOnChangeLoginEmail(event) }}
+                        value={formData.loginEmail}
+                        onChange={handleInputChange}
                     />
                     <input
                         type="password"
+                        name="loginPassword"
                         placeholder="Mật khẩu"
                         className="input-field"
-                        value={loginPassword}
-                        onChange={(event) => { handleOnChangeLoginPassword(event) }}
+                        value={formData.loginPassword}
+                        onChange={handleInputChange}
                     />
-                    <button className="btn">Đăng Nhập</button>
+                    <button className="btn" onClick={handleLogin}>
+                        Đăng Nhập
+                    </button>
                     <p>
                         Chưa có tài khoản?{" "}
                         <span className="toggle-link" onClick={toggleForm}>
@@ -101,42 +117,48 @@ const Login = ({ isAuth, setIsAuth }) => {
                     </div>
                 </div>
 
+                {/* Register Form */}
                 <div className={`form register-form ${!isLogin ? "active" : ""}`}>
                     <h2>Đăng Ký</h2>
                     <input
                         type="text"
+                        name="registerName"
                         placeholder="Tên đầy đủ"
                         className="input-field"
-                        value={registerName}
-                        onChange={(event) => { handleOnChangeRegisterName(event) }}
+                        value={formData.registerName}
+                        onChange={handleInputChange}
                     />
                     <input
                         type="email"
+                        name="registerEmail"
                         placeholder="Email"
                         className="input-field"
-                        value={registerEmail}
-                        onChange={(event) => { handleOnChangeRegisterEmail(event) }}
+                        value={formData.registerEmail}
+                        onChange={handleInputChange}
                     />
                     <input
                         type="text"
+                        name="registerPhoneNumber"
                         placeholder="Phone number"
                         className="input-field"
-                        value={registerPhoneNumber}
-                        onChange={(event) => { handleOnChangeRegisterPhoneNumber(event) }}
+                        value={formData.registerPhoneNumber}
+                        onChange={handleInputChange}
                     />
                     <input
                         type="password"
+                        name="registerPassword"
                         placeholder="Mật khẩu"
                         className="input-field"
-                        value={registerPassword}
-                        onChange={(event) => { handleOnChangeRegisterPassword(event) }}
+                        value={formData.registerPassword}
+                        onChange={handleInputChange}
                     />
                     <input
                         type="password"
+                        name="registerRePassword"
                         placeholder="Xác nhận mật khẩu"
                         className="input-field"
-                        value={registerRePassword}
-                        onChange={(event) => { handleOnChangeRegisterRePassword(event) }}
+                        value={formData.registerRePassword}
+                        onChange={handleInputChange}
                     />
                     <button className="btn">Đăng Ký</button>
                     <p>
