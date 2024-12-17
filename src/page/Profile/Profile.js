@@ -7,9 +7,14 @@ import {
 } from '../Data';
 import TicketBoughtTable from '../../component/TicketBoughtTable/TicketBoughtTable';
 import { useNavigate } from 'react-router';
+import { signOut } from '../../apis/auth';
 
 const Profile = () => {
     const navigate = useNavigate()
+
+    const handleSignout = () => {
+        signOut();
+    }
     useEffect(() => {
         if (!localStorage.token) navigate("/login")
     }, [localStorage.token])
@@ -44,6 +49,7 @@ const Profile = () => {
                 <button className='profile-change-button'>
                     <MdModeEdit className='profile-change-button-icon' />
                 </button>
+                <button className='profile-signout' onClick={() => { handleSignout() }}>Đăng xuất</button>
             </div>
 
             <div class="profile-purchase-history">

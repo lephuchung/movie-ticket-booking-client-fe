@@ -1,8 +1,6 @@
 export const signIn = async (formData) => {
     console.log("check formdata: ", formData);
-
     try {
-
         const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/signin`, {
             method: "POST",
             headers: {
@@ -22,6 +20,42 @@ export const signIn = async (formData) => {
         }
     } catch (error) {
         return { success: false, error: "Something went wrong!" };
+    }
+};
+
+export const signOut = async () => {
+    try {
+        const token = localStorage.getItem("token"); // Lấy token từ localStorage
+
+        if (!token) {
+            console.warn("No token found, user already logged out.");
+            return;
+        }
+
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/signout`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`, // Gửi token trong header
+            },
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            console.log("Logout successful:", result.message);
+
+            // Xóa token và thông tin người dùng khỏi localStorage
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+
+            // Điều hướng người dùng về trang đăng nhập
+            window.location.href = "/";
+        } else {
+            console.error("Logout failed:", result.error);
+        }
+    } catch (error) {
+        console.error("An error occurred while logging out:", error.message);
     }
 };
 

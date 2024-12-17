@@ -5,7 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
 import { signIn } from "../../apis/auth";
 
-const Login = ({ }) => {
+const Login = ({ setIsSignedIn }) => {
     const navigate = useNavigate();
     const [isLogin, setIsLogin] = useState(true);
     const [formData, setFormData] = useState({
@@ -55,6 +55,7 @@ const Login = ({ }) => {
             });
 
             if (response.success) {
+                setIsSignedIn(true);
                 navigate("/");
             } else {
                 alert(response.error || "Đăng nhập thất bại! Vui lòng thử lại.");
