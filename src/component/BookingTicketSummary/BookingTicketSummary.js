@@ -5,6 +5,7 @@ import { getDateTimeFromISOTime } from '../../utils/getDateTimeFromIsoTime';
 import { fetchShowtimeDetail } from '../../apis/fetchShowtimeDetail';
 import { fetchRoomDetail } from '../../apis/fetchRoomDetail';
 import { fetchTheaterDetail } from '../../apis/ferchTheaterDetail';
+import { getDateHourMinuteFromISOTime } from '../../utils/getDayHourMinuteFromIsoTime';
 
 const BookingTicketSummary = ({
     film = {
@@ -72,7 +73,7 @@ const BookingTicketSummary = ({
                     {showtimeSelected && showtimeSelected.length != 0 &&
                         <div>
                             <p>{theater?.Name} - {room?.Name}</p>
-                            <p>Suất: <strong>{getDateTimeFromISOTime(showtimeSelected?.StartTime)}</strong></p>
+                            <p>Suất: <strong>{getDateHourMinuteFromISOTime(showtimeSelected?.StartTime)}</strong></p>
                         </div>
                     }
                 </div>
