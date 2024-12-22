@@ -9,7 +9,6 @@ import { useEffect, useState } from 'react';
 const Navbar = ({ isSignedIn, setIsSignedIn }) => {
     const isMobile = useMediaQuery('(max-width: 570px)');
     const [menuOpen, setMenuOpen] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);

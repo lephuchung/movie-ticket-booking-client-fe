@@ -1,7 +1,7 @@
 export const signIn = async (formData) => {
     console.log("check formdata: ", formData);
     try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/signin`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_PREFIX}/auth/signin`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -25,18 +25,18 @@ export const signIn = async (formData) => {
 
 export const signOut = async () => {
     try {
-        const token = localStorage.getItem("token"); // Lấy token từ localStorage
+        const token = localStorage.getItem("token");
 
         if (!token) {
             console.warn("No token found, user already logged out.");
             return;
         }
 
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/signout`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_PREFIX}/auth/signout`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`, // Gửi token trong header
+                Authorization: `Bearer ${token}`,
             },
         });
 
@@ -45,11 +45,10 @@ export const signOut = async () => {
         if (response.ok) {
             console.log("Logout successful:", result.message);
 
-            // Xóa token và thông tin người dùng khỏi localStorage
             localStorage.removeItem("token");
             localStorage.removeItem("user");
 
-            // Điều hướng người dùng về trang đăng nhập
+            // Điều hướng người dùng về trang chủ
             window.location.href = "/";
         } else {
             console.error("Logout failed:", result.error);
@@ -61,7 +60,7 @@ export const signOut = async () => {
 
 export const signUp = async (formData) => {
     try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/signup`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_PREFIX}/auth/signup`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -71,8 +70,8 @@ export const signUp = async (formData) => {
         const result = await response.json();
         if (response.ok) {
             localStorage.setItem("token", result.token);
-            localStorage.setItem("user", JSON.stringify(result.user));
-            return { success: true, token: result.token, user: result.user };
+            localStorage.setItem("user", JSON.stringify(result.userEmail));
+            return { success: true, token: result.token, user: result.userEmail };
         } else {
             return { success: false, error: result.error, status: response.status };
         }

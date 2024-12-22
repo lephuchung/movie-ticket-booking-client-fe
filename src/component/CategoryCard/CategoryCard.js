@@ -7,7 +7,6 @@ import { getGenreTranslation } from '../../language/translateCategory';
 const CategoryCard = ({ category }) => {
     const navigate = useNavigate();
     const [bgColor, setBgColor] = useState('');
-    console.log("bgColor", bgColor);
 
     const handleOnclickCategoryDetail = () => {
         navigate(`/category/${category.Genre}`)

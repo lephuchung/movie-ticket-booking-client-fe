@@ -33,7 +33,8 @@ const Home = () => {
     try {
       // Fetch "Now Showing" movies
       const nowShowingMovies = await fetchNowShowingMovies();
-      setMovies(nowShowingMovies);
+      console.log("check now show: ", nowShowingMovies);
+      if (nowShowingMovies) setMovies(nowShowingMovies);
 
       // Fetch movies by genre
       const genreData = await Promise.all(

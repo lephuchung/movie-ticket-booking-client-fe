@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import emptyPoster from './img-blank.bb695736.svg'
 import "./BookingTicketSummary.scss"
 import { getDateTimeFromISOTime } from '../../utils/getDateTimeFromIsoTime';
+import { fetchShowtimeDetail } from '../../apis/fetchShowtimeDetail';
+import { fetchRoomDetail } from '../../apis/fetchRoomDetail';
+import { fetchTheaterDetail } from '../../apis/ferchTheaterDetail';
 
 const BookingTicketSummary = ({
     film = {
@@ -17,12 +20,39 @@ const BookingTicketSummary = ({
     setShowtime,
     setSeats,
 }) => {
+    const [showtimeSelected, setShowtimeSelected] = useState(null);
+    const [theater, setTheater] = useState(null);
+    const [room, setRoom] = useState(null);
     const handleOnclickBackButton = () => {
         setProvince("");
         setFilm("");
         setShowtime({});
         setSeats([]);
-    }
+    };
+
+    const getShowtimeDetail = async (showtimeId) => {
+        const showtimeFetch = await fetchShowtimeDetail(showtimeId);
+        setShowtimeSelected(showtimeFetch);
+    };
+
+    const getRoomAndTheater = async (showtimeSelected) => {
+        if (!showtimeSelected) return;
+        const roomFetch = await fetchRoomDetail(showtimeSelected.RoomId);
+        setRoom(roomFetch);
+        const theaterFetch = await fetchTheaterDetail(showtimeSelected.TheaterId);
+        setTheater(theaterFetch);
+    };
+
+    useEffect(() => {
+        getShowtimeDetail(showtime.showtimeId);
+    }, [showtime]);
+
+    useEffect(() => {
+        getRoomAndTheater(showtimeSelected);
+    }, [showtimeSelected])
+
+    console.log("check showtime selected: ", showtimeSelected);
+
     return (
         <div className="ticket-summary">
             {film.Title &&
@@ -39,10 +69,10 @@ const BookingTicketSummary = ({
                 }
 
                 <div className="details">
-                    {showtime.time &&
+                    {showtimeSelected && showtimeSelected.length != 0 &&
                         <div>
-                            <p>{showtime?.theatreName} - Room 1</p>
-                            <p>Suất: <strong>{getDateTimeFromISOTime(showtime?.time)}</strong></p>
+                            <p>{theater?.Name} - {room?.Name}</p>
+                            <p>Suất: <strong>{getDateTimeFromISOTime(showtimeSelected?.StartTime)}</strong></p>
                         </div>
                     }
                 </div>

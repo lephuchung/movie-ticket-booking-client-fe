@@ -7,7 +7,7 @@ import BookingSeat from '../../component/BookingSeat/BookingSeat';
 import BookingTicketSummary from '../../component/BookingTicketSummary/BookingTicketSummary';
 import { fetchProvince } from '../../apis/fetchProvince';
 import { fetchFilmInProvince } from '../../apis/fetchFilmInProvince';
-import { fetchShowtimeOfFilmInProvince } from '../../apis/fetchShowtimeOfFilmInProvince';
+import { fetchShowtimeOfFilmInProvince, fetchShowtimeOfFilmInProvinceV2 } from '../../apis/fetchShowtimeOfFilmInProvince';
 import { convertToISO } from '../../utils/convertToIsoTime';
 import { useNavigate } from 'react-router-dom';
 
@@ -35,13 +35,15 @@ const Booking = ({ }) => {
   const getInfor = async () => {
     try {
       const provinceList = await fetchProvince();
-      setProvinces(provinceList);
+      setProvinces(provinceList.locations);
       if (province) {
         const filmList = await fetchFilmInProvince(province);
         setFilms(filmList);
       }
       if (province && film) {
-        const showtimeList = await fetchShowtimeOfFilmInProvince(film.Title, province, convertToISO(dates[0].rawDate), convertToISO(dates[2].rawDate, true));
+        const showtimeList = await fetchShowtimeOfFilmInProvinceV2(film.MovieId, province);
+        console.log("check showtime List: ", showtimeList);
+
         setShowtimes(showtimeList);
       }
 
@@ -96,8 +98,6 @@ const Booking = ({ }) => {
     setDates(generatedDates);
     setDateFilter(generatedDates[0]);
   }, []);
-
-  console.log("showtimes: ", showtimes);
 
   useEffect(() => {
     getInfor();

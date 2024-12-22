@@ -12,9 +12,11 @@ import { fetchFilmDetail } from '../../apis/fetchFilmDetail';
 import { getDateFromISOTime } from '../../utils/getDateFromIsoTIme';
 import { fetchNowShowingMovies } from '../../apis/fetchNowShowing';
 import { getGenreTranslation } from '../../language/translateCategory';
+import { fetchShowtimeOfFilmInProvince } from '../../apis/fetchShowtimeOfFilmInProvince';
+import { fetchShowtimeOfFilm } from '../../apis/fetchShowtimeOfFilm';
 
 const FilmDetail = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const defaultFilm = {
     MovieId: "MID99999",
@@ -28,6 +30,7 @@ const FilmDetail = () => {
     PosterUrl: emptyPoster,
   }
   const [film, setFilm] = useState(defaultFilm);
+  const [filmStatus, setFilmStatus] = useState(false);
   const [moviesNowShowing, setMoviesNowShowing] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -69,9 +72,24 @@ const FilmDetail = () => {
     }
   };
 
+  const getFilmStatus = async (film) => {
+    console.log("Check film.MovieId: ", film.MovieId);
+
+    const showtimeFetch = await fetchShowtimeOfFilm(film.MovieId);
+    console.log("Check showtimeFetch: ", showtimeFetch);
+
+    if (showtimeFetch && showtimeFetch.length) {
+      setFilmStatus(true);
+    }
+  }
+
   useEffect(() => {
     getMoviesDetail(title);
   }, [title]);
+
+  useEffect(() => {
+    getFilmStatus(film)
+  }, [film]);
 
   useEffect(() => {
     getMoviesNowShowing();
@@ -117,7 +135,7 @@ const FilmDetail = () => {
                 <FaRegStar className='film-detail-rating-icon' />
                 <span>{film.Rating}</span>
               </div>
-              <p>Tình trạng: Phim đang chiếu</p>
+              <p>Tình trạng: {filmStatus ? "Phim đang chiếu" : "Phim tạm ngừng chiếu"}</p>
               <p>Nhà sản xuất: Đang cập nhật</p>
               <p>Thể loại: {getGenreTranslation(film.Genre)}</p>
               <p>Đạo diễn: {film.Director}</p>
