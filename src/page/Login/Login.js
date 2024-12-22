@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
 import { signIn, signUp } from "../../apis/auth";
+import { toast } from "react-toastify";
 
 const Login = ({ setIsSignedIn }) => {
     const navigate = useNavigate();
@@ -45,7 +46,7 @@ const Login = ({ setIsSignedIn }) => {
     const handleLogin = async () => {
         try {
             if (!formData.loginEmail.trim() || !formData.loginPassword.trim()) {
-                alert("Vui lòng nhập đầy đủ email và mật khẩu!");
+                toast.info("Vui lòng nhập đầy đủ email và mật khẩu!")
                 return;
             }
 
@@ -58,13 +59,14 @@ const Login = ({ setIsSignedIn }) => {
                 setIsSignedIn(true);
                 navigate("/");
             } else {
-                alert(response.error || "Đăng nhập thất bại! Vui lòng thử lại.");
+                toast.error(response.error || "Đăng nhập thất bại! Vui lòng thử lại.");
                 console.log(response);
 
             }
         } catch (error) {
             console.error("Lỗi khi đăng nhập:", error);
-            alert("Đã có lỗi xảy ra. Vui lòng thử lại sau!");
+            toast.error("Đã có lỗi xảy ra. Vui lòng thử lại sau!");
+
         } finally {
             clearForm();
         }
@@ -81,12 +83,12 @@ const Login = ({ setIsSignedIn }) => {
 
         if (!registerName.trim() || !registerEmail.trim() || !registerPhoneNumber.trim() ||
             !registerPassword.trim() || !registerRePassword.trim()) {
-            alert("Vui lòng điền đầy đủ thông tin đăng ký!");
+            toast.info("Vui lòng điền đầy đủ thông tin đăng ký!");
             return;
         }
 
         if (registerPassword !== registerRePassword) {
-            alert("Mật khẩu xác nhận không khớp. Vui lòng kiểm tra lại!");
+            toast.error("Mật khẩu xác nhận không khớp. Vui lòng kiểm tra lại!");
             return;
         }
 
@@ -99,16 +101,17 @@ const Login = ({ setIsSignedIn }) => {
             });
 
             if (response.success) {
-                alert("Đăng ký thành công! Chào mừng bạn!");
+                toast.success("Đăng ký thành công! Chào mừng bạn!");
+
                 setIsSignedIn(true);
                 navigate("/");
             } else {
-                alert(response.error || "Đăng ký thất bại! Vui lòng thử lại.");
+                toast.error(response.error || "Đăng ký thất bại! Vui lòng thử lại.");
                 console.error("Đăng ký thất bại:", response);
             }
         } catch (error) {
             console.error("Lỗi khi đăng ký:", error);
-            alert("Đã có lỗi xảy ra trong quá trình đăng ký. Vui lòng thử lại sau!");
+            toast.error("Đã có lỗi xảy ra trong quá trình đăng ký. Vui lòng thử lại sau!");
         } finally {
             clearForm();
         }

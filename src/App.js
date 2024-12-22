@@ -12,12 +12,27 @@ import Profile from './page/Profile/Profile';
 import Footer from './component/Footer/Footer';
 import Login from './page/Login/Login';
 import { useState } from 'react';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(!!localStorage.getItem("token"));
   return (
     <BrowserRouter>
       <div className="App">
+        <ToastContainer
+          progressClassName="toastProgress"
+          bodyClassName="toastBody"
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <header className="App-header">
           <Navbar isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} />
           <div className='main-container'>

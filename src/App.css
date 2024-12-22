@@ -50,3 +50,15 @@ h3{
 ::-webkit-scrollbar {
   display:none;
 }
+
+.toastBody {
+  background-color: #FFF;
+  font-family: "Atlas Grotesk Web", Arial, Helvetica, sans-serif;
+  color: #10171D; /* #10171D */
+  font-size: 10px !important;
+}
+.toastProgress {
+  background: #333F48 !important;
+  font-size: 10px !important;
+
+}
