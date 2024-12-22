@@ -94,7 +94,7 @@ const Login = ({ setIsSignedIn }) => {
             const response = await signUp({
                 name: registerName,
                 email: registerEmail,
-                phoneNumber: registerPhoneNumber,
+                phone: registerPhoneNumber,
                 password: registerPassword,
             });
 

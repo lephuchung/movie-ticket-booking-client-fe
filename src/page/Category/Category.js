@@ -28,7 +28,7 @@ const Category = () => {
       <h2 className='category-list-title'>Danh sách thể loại</h2>
       {categories.map((category) => {
         return (
-          <CategoryCard category={category} />
+          <CategoryCard key={category.Genre} category={category} />
         )
       })}
     </div>
