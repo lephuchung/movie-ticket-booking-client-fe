@@ -33,12 +33,15 @@ const BookingShowTime = ({
 
     const groupShowtimes = (showtimes) => {
         const grouped = showtimes.reduce((acc, showtime) => {
-            const { ShowtimeId, TheaterId, StartTime } = showtime;
+            const { ShowtimeId, TheaterId, StartTime, TheaterName } = showtime;
 
             let theaterGroup = acc.find((group) => group.theater.theaterId === TheaterId);
             if (!theaterGroup) {
                 theaterGroup = {
-                    theater: { theaterId: TheaterId },
+                    theater: {
+                        theaterId: TheaterId,
+                        theaterName: TheaterName,
+                    },
                     times: []
                 };
                 acc.push(theaterGroup);
@@ -59,6 +62,7 @@ const BookingShowTime = ({
     }
 
     const groupedShowtimes = groupShowtimes(getShowtimesAfterNow(showtimes));
+    console.log("check grpShowtime: ", groupedShowtimes);
 
     return (
         <div className='booking-showtime'>

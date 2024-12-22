@@ -3,7 +3,7 @@ import "./Login.scss";
 import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
-import { signIn } from "../../apis/auth";
+import { signIn, signUp } from "../../apis/auth";
 
 const Login = ({ setIsSignedIn }) => {
     const navigate = useNavigate();
@@ -69,6 +69,50 @@ const Login = ({ setIsSignedIn }) => {
             clearForm();
         }
     };
+
+    const handleSignUp = async () => {
+        const {
+            registerName,
+            registerEmail,
+            registerPhoneNumber,
+            registerPassword,
+            registerRePassword,
+        } = formData;
+
+        if (!registerName.trim() || !registerEmail.trim() || !registerPhoneNumber.trim() ||
+            !registerPassword.trim() || !registerRePassword.trim()) {
+            alert("Vui lòng điền đầy đủ thông tin đăng ký!");
+            return;
+        }
+
+        if (registerPassword !== registerRePassword) {
+            alert("Mật khẩu xác nhận không khớp. Vui lòng kiểm tra lại!");
+            return;
+        }
+
+        try {
+            const response = await signUp({
+                name: registerName,
+                email: registerEmail,
+                phoneNumber: registerPhoneNumber,
+                password: registerPassword,
+            });
+
+            if (response.success) {
+                alert("Đăng ký thành công! Chào mừng bạn!");
+                setIsSignedIn(true);
+                navigate("/");
+            } else {
+                alert(response.error || "Đăng ký thất bại! Vui lòng thử lại.");
+                console.error("Đăng ký thất bại:", response);
+            }
+        } catch (error) {
+            console.error("Lỗi khi đăng ký:", error);
+            alert("Đã có lỗi xảy ra trong quá trình đăng ký. Vui lòng thử lại sau!");
+        } finally {
+            clearForm();
+        }
+    }
 
     // useEffect(() => {
     //     if (isAuth) navigate("/");
@@ -161,7 +205,7 @@ const Login = ({ setIsSignedIn }) => {
                         value={formData.registerRePassword}
                         onChange={handleInputChange}
                     />
-                    <button className="btn">Đăng Ký</button>
+                    <button className="btn" onClick={handleSignUp}>Đăng Ký</button>
                     <p>
                         Đã có tài khoản?{" "}
                         <span className="toggle-link" onClick={toggleForm}>

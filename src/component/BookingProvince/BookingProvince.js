@@ -13,12 +13,6 @@ const BookingProvince = ({
   setOpenToggleShowTime,
   setOpenToggleSeat,
 }) => {
-  const provinceArr = [
-    { name: "Hải Phòng" },
-    { name: "Hà Nội" },
-    { name: "Thành phố Hồ Chí Minh" },
-  ]
-
   const handleClickToggle = () => {
     setOpenToggleFilm(false);
     setOpenToggleShowTime(false);

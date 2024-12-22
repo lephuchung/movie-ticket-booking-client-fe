@@ -23,7 +23,7 @@ const ShowTimeTheatreItem = ({
             {showtimes && showtimes.map((item) => {
                 return (
                     <div key={item.theater.theaterId} className="theatre-item">
-                        <h3 className='theatre-name'>{item.theater.theaterId}</h3>
+                        <h3 className='theatre-name'>{item.theater.theaterName}</h3>
                         <div className='theatre-showtimes'>{item.times
                             .filter((time) => getDateFromISOTime(time.time) === dateFilter.rawDate)
                             .sort((a, b) => new Date(a.time) - new Date(b.time))

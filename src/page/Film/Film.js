@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./Film.scss"
 import MovieList from '../../component/MovieList/MovieList'
-import { fetchNowShowingMovies } from '../../apis/fetchNowShowing'
+import { fetchAllFilm } from '../../apis/fetchAllFilm'
 import SearchBar from '../../component/SearchBar/SearchBar'
 
 const Film = () => {
@@ -12,7 +12,7 @@ const Film = () => {
 
   const getMovies = async () => {
     try {
-      const moviesList = await fetchNowShowingMovies();
+      const moviesList = await fetchAllFilm();
       setMovies(moviesList);
     } catch (err) {
       setError(err.message);
