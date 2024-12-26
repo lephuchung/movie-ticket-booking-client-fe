@@ -10,7 +10,6 @@ export const changePassword = async (userId, newPassword) => {
             `${API_URL}${API_PREFIX}/users/${userId}/change-password`,
             { newPassword }
         );
-        console.log(response.data.message);
         toast.success("Đổi mật khẩu thành công!", {
             autoClose: 5000,
             hideProgressBar: false,

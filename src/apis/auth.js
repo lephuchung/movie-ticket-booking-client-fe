@@ -1,5 +1,6 @@
+import { toast } from "react-toastify";
+
 export const signIn = async (formData) => {
-    console.log("check formdata: ", formData);
     try {
         const response = await fetch(`${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_PREFIX}/auth/signin`, {
             method: "POST",
@@ -9,7 +10,6 @@ export const signIn = async (formData) => {
             body: JSON.stringify(formData),
         });
         const result = await response.json();
-        console.log("Check result: ", result);
 
         if (response.ok) {
             localStorage.setItem("token", result.accessToken);
@@ -43,8 +43,6 @@ export const signOut = async () => {
         const result = await response.json();
 
         if (response.ok) {
-            console.log("Logout successful:", result.message);
-
             localStorage.removeItem("token");
             localStorage.removeItem("user");
 

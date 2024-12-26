@@ -13,6 +13,7 @@ import Footer from './component/Footer/Footer';
 import Login from './page/Login/Login';
 import { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
+import Payment from './page/Payment/Payment';
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(!!localStorage.getItem("token"));
@@ -43,6 +44,7 @@ function App() {
               <Route path='/category' element={<Category />} />
               <Route path='/booking' element={<Booking />} />
               <Route path='/profile' element={<Profile />} />
+              <Route path='/payment' element={<Payment />} />
               <Route path='/login' element={<Login setIsSignedIn={setIsSignedIn} />} />
               <Route path='/' element={<Home />} />
               <Route path='*' element={<NotFound />} />

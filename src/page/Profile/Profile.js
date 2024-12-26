@@ -16,14 +16,12 @@ const Profile = () => {
     const [tickesBooked, setTicketBooked] = useState([]);
     const [openPopupEditProfile, setOpenPopupEditProfile] = useState(false);
 
-    console.log("check ticketbooked: ", tickesBooked);
-
     const handleSignout = () => {
         signOut();
     }
 
     const getInfor = async () => {
-        const ticketsFetch = await fetchTicketByEmail(userData.Email)
+        const ticketsFetch = await fetchTicketByEmail(userData?.Email)
         setTicketBooked(ticketsFetch);
     }
     useEffect(() => {
@@ -34,7 +32,7 @@ const Profile = () => {
     const userData = JSON.parse(user);
 
     useEffect(() => {
-        getInfor()
+        getInfor();
     }, [])
 
     return (
@@ -42,26 +40,26 @@ const Profile = () => {
             <div className="profile-info">
                 <div className="profile-info-header">
                     <img src={avatarPlaceHolder} alt="Profile Picture" className="profile-info-avatar" />
-                    <h2 className="profile-info-name">{userData.Name}</h2>
+                    <h2 className="profile-info-name">{userData?.Name}</h2>
                 </div>
                 <div className="profile-details">
                     <p>
                         <strong>
                             Mã người dùng: &nbsp;
                         </strong>
-                        {userData.UserId}
+                        {userData?.UserId}
                     </p>
                     <p>
                         <strong>
                             Email: &nbsp;
                         </strong>
-                        {userData.Email}
+                        {userData?.Email}
                     </p>
                     <p>
                         <strong>
                             Số điện thoại: &nbsp;
                         </strong>
-                        {userData.Phone}
+                        {userData?.Phone}
                     </p>
                 </div>
                 <button className='profile-change-button'>
@@ -74,7 +72,7 @@ const Profile = () => {
                 <h3 className='profile-purchase-history-title'>Các Vé Đã Mua</h3>
                 <TicketBoughtTable tickets={tickesBooked} />
             </div>
-            {openPopupEditProfile && <EditProfileForm userId={userData.UserId} setOpenPopupEditProfile={setOpenPopupEditProfile} />}
+            {openPopupEditProfile && <EditProfileForm userId={userData?.UserId} setOpenPopupEditProfile={setOpenPopupEditProfile} />}
         </div>
     )
 }

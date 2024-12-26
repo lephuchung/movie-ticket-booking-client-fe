@@ -73,10 +73,7 @@ const FilmDetail = () => {
   };
 
   const getFilmStatus = async (film) => {
-    console.log("Check film.MovieId: ", film.MovieId);
-
     const showtimeFetch = await fetchShowtimeOfFilm(film.MovieId);
-    console.log("Check showtimeFetch: ", showtimeFetch);
 
     if (showtimeFetch && showtimeFetch.length) {
       setFilmStatus(true);

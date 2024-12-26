@@ -62,7 +62,6 @@ const BookingShowTime = ({
     }
 
     const groupedShowtimes = groupShowtimes(getShowtimesAfterNow(showtimes));
-    console.log("check grpShowtime: ", groupedShowtimes);
 
     return (
         <div className='booking-showtime'>

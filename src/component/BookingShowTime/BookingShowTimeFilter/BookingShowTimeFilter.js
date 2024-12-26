@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import "./BookingShowTimeFilter.scss"
 
 const BookingShowTimeFilter = ({ dateFilter, setDateFilter, dates }) => {
-    console.log("check dates: ", dates);
 
     return (
         <div className='booking-showtime-filter'>

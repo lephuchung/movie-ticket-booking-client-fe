@@ -10,7 +10,7 @@ const Seat = ({ seat, onClick }) => {
 
     return (
         <div className={getSeatClass()} onClick={() => !seat.isBooked && onClick(seat.id)}>
-            {seat.row}{seat.seatNumber}
+            {seat.seatNumber}
         </div>
     );
 };

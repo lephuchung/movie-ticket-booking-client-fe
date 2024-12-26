@@ -6,6 +6,7 @@ import { fetchShowtimeDetail } from '../../apis/fetchShowtimeDetail';
 import { fetchRoomDetail } from '../../apis/fetchRoomDetail';
 import { fetchTheaterDetail } from '../../apis/ferchTheaterDetail';
 import { getDateHourMinuteFromISOTime } from '../../utils/getDayHourMinuteFromIsoTime';
+import { BookingTicket } from '../../apis/bookingTicket';
 
 const BookingTicketSummary = ({
     film = {
@@ -24,6 +25,7 @@ const BookingTicketSummary = ({
     const [showtimeSelected, setShowtimeSelected] = useState(null);
     const [theater, setTheater] = useState(null);
     const [room, setRoom] = useState(null);
+    const [isBooking, setIsBooking] = useState(false);  // Thêm state isBooking
     const handleOnclickBackButton = () => {
         setProvince("");
         setFilm("");
@@ -31,7 +33,37 @@ const BookingTicketSummary = ({
         setSeats([]);
     };
 
+    const handleOnclickBookingButton = async () => {
+        if (!showtimeSelected) return;
+        if (seats.length == 0) return;
+        const user = localStorage.getItem("user");
+        const userData = JSON.parse(user);
+        const data = {
+            userId: userData.UserId,
+            showtimeId: showtimeSelected.ShowtimeId,
+            seatNumbers: seats,
+        }
+        setIsBooking(true);
+
+        try {
+            await BookingTicket(data);
+            setTimeout(() => {
+                window.location.href = "/payment";
+            }, 4000);
+
+        } catch (error) {
+            setTimeout(() => {
+                window.location.reload();
+            }, 4000);
+        } finally {
+            setTimeout(() => {
+                setIsBooking(false);
+            }, 5000);
+        }
+    }
+
     const getShowtimeDetail = async (showtimeId) => {
+        if (!showtimeId) return;
         const showtimeFetch = await fetchShowtimeDetail(showtimeId);
         setShowtimeSelected(showtimeFetch);
     };
@@ -45,14 +77,15 @@ const BookingTicketSummary = ({
     };
 
     useEffect(() => {
-        getShowtimeDetail(showtime.showtimeId);
+        getShowtimeDetail(showtime?.showtimeId);
     }, [showtime]);
 
     useEffect(() => {
-        getRoomAndTheater(showtimeSelected);
+        // console.log("check showtimeSelected: ", showtimeSelected);
+        if (showtimeSelected) getRoomAndTheater(showtimeSelected);
     }, [showtimeSelected])
 
-    console.log("check showtime selected: ", showtimeSelected);
+    // console.log("check showtime selected: ", showtimeSelected);
 
     return (
         <div className="ticket-summary">
@@ -82,7 +115,7 @@ const BookingTicketSummary = ({
             <div className="seat-info">
                 <div className='seat-number'>
                     <p>{seats?.length}x Ghế đơn</p>
-                    <p>Ghế: {seats.join(", ")}</p>
+                    <p>Ghế: {seats?.join(", ")}</p>
                 </div>
                 {
                     price && <p className="seat-price">{price.toLocaleString()} ₫</p>
@@ -96,7 +129,13 @@ const BookingTicketSummary = ({
             {seats.length !== 0 &&
                 <div className="actions">
                     <button className="back-button" onClick={() => { handleOnclickBackButton() }}>Quay lại</button>
-                    <button className="continue-button">Tiếp tục</button>
+                    <button
+                        className={`continue-button ${isBooking ? 'disabled' : ''}`}
+                        onClick={() => { handleOnclickBookingButton() }}
+                        disabled={isBooking}
+                    >
+                        {isBooking ? 'Đang đặt vé' : 'Đặt vé'}
+                    </button>
                 </div>
             }
         </div>
