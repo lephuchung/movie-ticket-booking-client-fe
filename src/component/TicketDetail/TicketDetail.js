@@ -8,6 +8,8 @@ const TicketDetail = ({ ticket, onClose }) => {
     const handlePayment = () => {
         console.log('hehe');
     }
+    console.log("check ticket.paymentStatus: ", ticket.PaymentStatus);
+
     return (
         <div className="ticket-detail-overlay">
             <div className="ticket-detail-container">
@@ -23,7 +25,7 @@ const TicketDetail = ({ ticket, onClose }) => {
                 <p><strong>Giá tiền</strong> {ticket.TotalPrice.toLocaleString()} VNĐ</p>
                 <p><strong>Trạng thái</strong> {getPaymentStatusTranslation(ticket.PaymentStatus)}</p>
                 <p><strong>Thời gian đặt:</strong> {getDateHourMinuteFromISOTime(ticket.BookingTime)}</p>
-                {ticket.paymentStatus === 'Chưa thanh toán' && (
+                {ticket.PaymentStatus === 'pending' && (
                     <button className="ticket-detail-payment-button" onClick={handlePayment}>
                         Thanh toán
                     </button>

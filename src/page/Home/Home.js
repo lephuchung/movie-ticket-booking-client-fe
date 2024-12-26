@@ -33,7 +33,6 @@ const Home = () => {
     try {
       // Fetch "Now Showing" movies
       const nowShowingMovies = await fetchNowShowingMovies();
-      console.log("check now show: ", nowShowingMovies);
       if (nowShowingMovies) setMovies(nowShowingMovies);
 
       // Fetch movies by genre

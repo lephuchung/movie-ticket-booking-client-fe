@@ -1,7 +1,7 @@
 export const getPaymentStatusTranslation = (paymentStatus) => {
     const dictionary = {
         "paid": "Đã thanh toán",
-        "waiting payment": "Chờ thanh toán",
+        "pending": "Chờ thanh toán",
         "cancel": "Hủy thanh toán",
     };
 

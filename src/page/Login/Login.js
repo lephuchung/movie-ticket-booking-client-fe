@@ -60,8 +60,6 @@ const Login = ({ setIsSignedIn }) => {
                 navigate("/");
             } else {
                 toast.error(response.error || "Đăng nhập thất bại! Vui lòng thử lại.");
-                console.log(response);
-
             }
         } catch (error) {
             console.error("Lỗi khi đăng nhập:", error);

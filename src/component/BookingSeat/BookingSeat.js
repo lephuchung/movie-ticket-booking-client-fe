@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./BookingSeat.scss";
 import { IoIosArrowDropdown, IoIosArrowDropup } from "react-icons/io";
 import Seat from './Seat/Seat';
+import { fetchTicketByShowtimeId } from '../../apis/fetchTicketByShowtimeId';
+import { fetchSeatsByRoomId } from '../../apis/fetchSeatsByRoomId';
+import { fetchShowtimeDetail } from '../../apis/fetchShowtimeDetail';
 
 const initialRows = [
     {
@@ -159,6 +162,162 @@ const initialRows = [
     },
 ];
 
+const initialRows2 = [
+    {
+        row: "I",
+        seats: [
+            { seatNumber: "I1", isBooked: false, isSelected: false },
+            { seatNumber: "I2", isBooked: false, isSelected: false },
+            { seatNumber: "I3", isBooked: false, isSelected: false },
+            { seatNumber: "I4", isBooked: false, isSelected: false },
+            { seatNumber: "I5", isBooked: false, isSelected: false },
+            { seatNumber: "I6", isBooked: false, isSelected: false },
+            { seatNumber: "I7", isBooked: false, isSelected: false },
+            { seatNumber: "I8", isBooked: false, isSelected: false },
+            { seatNumber: "I9", isBooked: false, isSelected: false },
+            { seatNumber: "I10", isBooked: false, isSelected: false },
+            { seatNumber: "I11", isBooked: false, isSelected: false },
+            { seatNumber: "I12", isBooked: false, isSelected: false },
+        ],
+    },
+    {
+        row: "H",
+        seats: [
+            { seatNumber: "H1", isBooked: false, isSelected: false },
+            { seatNumber: "H2", isBooked: false, isSelected: false },
+            { seatNumber: "H3", isBooked: false, isSelected: false },
+            { seatNumber: "H4", isBooked: false, isSelected: false },
+            { seatNumber: "H5", isBooked: false, isSelected: false },
+            { seatNumber: "H6", isBooked: false, isSelected: false },
+            { seatNumber: "H7", isBooked: false, isSelected: false },
+            { seatNumber: "H8", isBooked: false, isSelected: false },
+            { seatNumber: "H9", isBooked: false, isSelected: false },
+            { seatNumber: "H10", isBooked: false, isSelected: false },
+            { seatNumber: "H11", isBooked: false, isSelected: false },
+            { seatNumber: "H12", isBooked: false, isSelected: false },
+        ],
+    },
+    {
+        row: "G",
+        seats: [
+            { seatNumber: "G1", isBooked: false, isSelected: false },
+            { seatNumber: "G2", isBooked: false, isSelected: false },
+            { seatNumber: "G3", isBooked: false, isSelected: false },
+            { seatNumber: "G4", isBooked: false, isSelected: false },
+            { seatNumber: "G5", isBooked: false, isSelected: false },
+            { seatNumber: "G6", isBooked: false, isSelected: false },
+            { seatNumber: "G7", isBooked: false, isSelected: false },
+            { seatNumber: "G8", isBooked: false, isSelected: false },
+            { seatNumber: "G9", isBooked: false, isSelected: false },
+            { seatNumber: "G10", isBooked: false, isSelected: false },
+            { seatNumber: "G11", isBooked: false, isSelected: false },
+            { seatNumber: "G12", isBooked: false, isSelected: false },
+        ],
+    },
+    {
+        row: "F",
+        seats: [
+            { seatNumber: "F1", isBooked: false, isSelected: false },
+            { seatNumber: "F2", isBooked: false, isSelected: false },
+            { seatNumber: "F3", isBooked: false, isSelected: false },
+            { seatNumber: "F4", isBooked: false, isSelected: false },
+            { seatNumber: "F5", isBooked: false, isSelected: false },
+            { seatNumber: "F6", isBooked: false, isSelected: false },
+            { seatNumber: "F7", isBooked: false, isSelected: false },
+            { seatNumber: "F8", isBooked: false, isSelected: false },
+            { seatNumber: "F9", isBooked: false, isSelected: false },
+            { seatNumber: "F10", isBooked: false, isSelected: false },
+            { seatNumber: "F11", isBooked: false, isSelected: false },
+            { seatNumber: "F12", isBooked: false, isSelected: false },
+        ],
+    },
+    {
+        row: "E",
+        seats: [
+            { seatNumber: "E1", isBooked: false, isSelected: false },
+            { seatNumber: "E2", isBooked: false, isSelected: false },
+            { seatNumber: "E3", isBooked: false, isSelected: false },
+            { seatNumber: "E4", isBooked: false, isSelected: false },
+            { seatNumber: "E5", isBooked: false, isSelected: false },
+            { seatNumber: "E6", isBooked: false, isSelected: false },
+            { seatNumber: "E7", isBooked: false, isSelected: false },
+            { seatNumber: "E8", isBooked: false, isSelected: false },
+            { seatNumber: "E9", isBooked: false, isSelected: false },
+            { seatNumber: "E10", isBooked: false, isSelected: false },
+            { seatNumber: "E11", isBooked: false, isSelected: false },
+            { seatNumber: "E12", isBooked: false, isSelected: false },
+        ],
+    },
+    {
+        row: "D",
+        seats: [
+            { seatNumber: "D1", isBooked: false, isSelected: false },
+            { seatNumber: "D2", isBooked: false, isSelected: false },
+            { seatNumber: "D3", isBooked: false, isSelected: false },
+            { seatNumber: "D4", isBooked: false, isSelected: false },
+            { seatNumber: "D5", isBooked: false, isSelected: false },
+            { seatNumber: "D6", isBooked: false, isSelected: false },
+            { seatNumber: "D7", isBooked: false, isSelected: false },
+            { seatNumber: "D8", isBooked: false, isSelected: false },
+            { seatNumber: "D9", isBooked: false, isSelected: false },
+            { seatNumber: "D10", isBooked: false, isSelected: false },
+            { seatNumber: "D11", isBooked: false, isSelected: false },
+            { seatNumber: "D12", isBooked: false, isSelected: false },
+        ],
+    },
+    {
+        row: "C",
+        seats: [
+            { seatNumber: "C1", isBooked: false, isSelected: false },
+            { seatNumber: "C2", isBooked: true, isSelected: false },
+            { seatNumber: "C3", isBooked: true, isSelected: false },
+            { seatNumber: "C4", isBooked: true, isSelected: false },
+            { seatNumber: "C5", isBooked: true, isSelected: false },
+            { seatNumber: "C6", isBooked: true, isSelected: false },
+            { seatNumber: "C7", isBooked: true, isSelected: false },
+            { seatNumber: "C8", isBooked: true, isSelected: false },
+            { seatNumber: "C9", isBooked: true, isSelected: false },
+            { seatNumber: "C10", isBooked: true, isSelected: false },
+            { seatNumber: "C11", isBooked: false, isSelected: false },
+            { seatNumber: "C12", isBooked: false, isSelected: false },
+        ],
+    },
+    {
+        row: "B",
+        seats: [
+            { seatNumber: "B1", isBooked: false, isSelected: false },
+            { seatNumber: "B2", isBooked: false, isSelected: false },
+            { seatNumber: "B3", isBooked: false, isSelected: false },
+            { seatNumber: "B4", isBooked: false, isSelected: false },
+            { seatNumber: "B5", isBooked: false, isSelected: false },
+            { seatNumber: "B6", isBooked: false, isSelected: false },
+            { seatNumber: "B7", isBooked: false, isSelected: false },
+            { seatNumber: "B8", isBooked: false, isSelected: false },
+            { seatNumber: "B9", isBooked: false, isSelected: false },
+            { seatNumber: "B10", isBooked: false, isSelected: false },
+            { seatNumber: "B11", isBooked: false, isSelected: false },
+            { seatNumber: "B12", isBooked: false, isSelected: false },
+        ],
+    },
+    {
+        row: "A",
+        seats: [
+            { seatNumber: "A1", isBooked: false, isSelected: false },
+            { seatNumber: "A2", isBooked: false, isSelected: false },
+            { seatNumber: "A3", isBooked: false, isSelected: false },
+            { seatNumber: "A4", isBooked: false, isSelected: false },
+            { seatNumber: "A5", isBooked: false, isSelected: false },
+            { seatNumber: "A6", isBooked: false, isSelected: false },
+            { seatNumber: "A7", isBooked: false, isSelected: false },
+            { seatNumber: "A8", isBooked: false, isSelected: false },
+            { seatNumber: "A9", isBooked: false, isSelected: false },
+            { seatNumber: "A10", isBooked: false, isSelected: false },
+            { seatNumber: "A11", isBooked: false, isSelected: false },
+            { seatNumber: "A12", isBooked: false, isSelected: false },
+        ],
+    },
+];
+
 const BookingSeat = ({
     province,
     film,
@@ -170,7 +329,11 @@ const BookingSeat = ({
     setOpenToggleProvince,
     setOpenToggleFilm,
 }) => {
-    const [rows, setRows] = useState(initialRows)
+    const [rows, setRows] = useState(initialRows);
+    const [rows2, setRows2] = useState([]);
+    const [seatsData, setSeatsData] = useState([]);
+    const [ticketsData, setTicketsData] = useState([]);
+    const [showtimeSelected, setShowtimeSelected] = useState(null);
 
     const handleClickToggle = () => {
         setOpenToggleProvince(false);
@@ -179,12 +342,12 @@ const BookingSeat = ({
         setOpenToggleSeat(!openToggleSeat);
     };
 
-    const handleSeatClick = (seatId) => {
-        setRows((prevRows) =>
+    const handleSeatClick = (seatNumber) => {
+        setRows2((prevRows) =>
             prevRows.map((row) => ({
                 ...row,
                 seats: row.seats.map((seat) =>
-                    seat.id === seatId && !seat.isBooked
+                    seat.seatNumber === seatNumber && !seat.isBooked
                         ? { ...seat, isSelected: !seat.isSelected }
                         : seat
                 ),
@@ -192,13 +355,54 @@ const BookingSeat = ({
         );
 
         setSeats((prevSelected) => {
-            if (prevSelected.includes(seatId)) {
-                return prevSelected.filter((id) => id !== seatId);
+            if (prevSelected.includes(seatNumber)) {
+                return prevSelected.filter((number) => number !== seatNumber);
             } else {
-                return [...prevSelected, seatId];
+                return [...prevSelected, seatNumber];
             }
         });
     };
+
+    const getInfor = async (showtimeSelected) => {
+        const ticketsFetch = await fetchTicketByShowtimeId(showtimeSelected?.ShowtimeId)
+        setTicketsData(ticketsFetch);
+        const seatsFetch = await fetchSeatsByRoomId(showtimeSelected?.RoomId)
+        setSeatsData(seatsFetch);
+    }
+
+    const getShowtimeDetail = async (showtimeId) => {
+        if (!showtimeId) return;
+        const showtimeFetch = await fetchShowtimeDetail(showtimeId);
+        setShowtimeSelected(showtimeFetch);
+    };
+
+    useEffect(() => {
+        const seatStatus = seatsData.reduce((rows, seat) => {
+            const { Line, SeatNumber } = seat;
+            let row = rows.find(r => r.row === Line);
+            if (!row) {
+                row = { row: Line, seats: [] };
+                rows.push(row);
+            }
+            const isBooked = ticketsData.some(ticket => ticket.SeatNumber === SeatNumber);
+            row.seats.push({
+                seatNumber: SeatNumber,
+                isBooked,
+                isSelected: false,
+            });
+            return rows;
+        }, []);
+        setRows2(seatStatus.sort((a, b) => b.row.localeCompare(a.row)));
+    }, [seatsData, ticketsData]);
+
+    useEffect(() => {
+        if (!showtimeSelected) return
+        getInfor(showtimeSelected);
+    }, [showtimeSelected]);
+
+    useEffect(() => {
+        getShowtimeDetail(showtime?.showtimeId);
+    }, [showtime]);
 
     return (
         <div className='booking-seat'>
@@ -212,16 +416,16 @@ const BookingSeat = ({
             </div>
             {openToggleSeat && province && film && showtime.showtimeId &&
                 <div className="booking-seat-content">
-                    {rows.map((row) => {
+                    {rows2.map((row) => {
                         return (
                             <div className='seat-row'>
                                 {
                                     row.seats.map((seat) => {
                                         return (
                                             <Seat
-                                                key={seat.id}
+                                                key={seat.seatNumber}
                                                 seat={seat}
-                                                onClick={handleSeatClick} />
+                                                onClick={() => handleSeatClick(seat.seatNumber)} />
                                         )
                                     })
                                 }

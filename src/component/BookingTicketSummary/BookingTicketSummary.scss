@@ -87,6 +87,7 @@
         }
 
         .seat-price {
+            min-width  : 70px;
             font-weight: bold;
             text-align : right;
             width      : 100px;
@@ -127,6 +128,11 @@
 
         .continue-button {
             background-color: $color-primary;
+            color           : $color-white;
+        }
+
+        .disabled {
+            background-color: $color-primary-disabled;
             color           : $color-white;
         }
     }

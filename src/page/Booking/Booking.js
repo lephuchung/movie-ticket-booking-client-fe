@@ -42,8 +42,6 @@ const Booking = ({ }) => {
       }
       if (province && film) {
         const showtimeList = await fetchShowtimeOfFilmInProvinceV2(film.MovieId, province);
-        console.log("check showtime List: ", showtimeList);
-
         setShowtimes(showtimeList);
       }
 
@@ -81,9 +79,7 @@ const Booking = ({ }) => {
   };
 
   const getPriceByShowtimeId = (showtime, showtimes) => {
-
     const showtimeSelected = showtimes.find(st => st.ShowtimeId === showtime.showtimeId);
-    console.log("showtimeSelect: ", showtimeSelected);
 
     return showtimeSelected ? showtimeSelected.Price : null;
   }
@@ -106,12 +102,6 @@ const Booking = ({ }) => {
   useEffect(() => {
     if (!localStorage.token) navigate("/login")
   }, [localStorage.token])
-
-  const data = {
-    showtimeId: showtime,
-    seats,
-  }
-  console.log("check data: ", data);
 
   return (
     <div className='booking'>
