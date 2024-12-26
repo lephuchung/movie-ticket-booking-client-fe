@@ -7,6 +7,7 @@ import { fetchRoomDetail } from '../../apis/fetchRoomDetail';
 import { fetchTheaterDetail } from '../../apis/ferchTheaterDetail';
 import { getDateHourMinuteFromISOTime } from '../../utils/getDayHourMinuteFromIsoTime';
 import { BookingTicket } from '../../apis/bookingTicket';
+import { Base64 } from 'js-base64';
 
 const BookingTicketSummary = ({
     film = {
@@ -47,8 +48,9 @@ const BookingTicketSummary = ({
 
         try {
             await BookingTicket(data);
+            const encodedData = Base64.encode(JSON.stringify(data));
             setTimeout(() => {
-                window.location.href = "/payment";
+                window.location.href = `/payment/${encodedData}`;
             }, 4000);
 
         } catch (error) {
@@ -81,11 +83,8 @@ const BookingTicketSummary = ({
     }, [showtime]);
 
     useEffect(() => {
-        // console.log("check showtimeSelected: ", showtimeSelected);
         if (showtimeSelected) getRoomAndTheater(showtimeSelected);
     }, [showtimeSelected])
-
-    // console.log("check showtime selected: ", showtimeSelected);
 
     return (
         <div className="ticket-summary">

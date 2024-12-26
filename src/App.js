@@ -44,7 +44,7 @@ function App() {
               <Route path='/category' element={<Category />} />
               <Route path='/booking' element={<Booking />} />
               <Route path='/profile' element={<Profile />} />
-              <Route path='/payment' element={<Payment />} />
+              <Route path='/payment/:encodedData' element={<Payment />} />
               <Route path='/login' element={<Login setIsSignedIn={setIsSignedIn} />} />
               <Route path='/' element={<Home />} />
               <Route path='*' element={<NotFound />} />
